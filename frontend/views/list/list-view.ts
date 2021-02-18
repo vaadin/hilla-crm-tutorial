@@ -82,7 +82,6 @@ export class ListView extends View {
   // we are not interested in it.
   first = true;
   handleGridSelection(e: CustomEvent) {
-    // TODO
     if (this.first) {
       this.first = false;
       return;

@@ -12,7 +12,6 @@ export class DashboardView extends View {
   }
 
   render() {
-    console.log(dashboardViewStore.companyStats);
     return html`
       <div class="v-font-size-xl v-mb-xl">
         ${dashboardViewStore.contactCount} contacts
