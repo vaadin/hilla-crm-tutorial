@@ -25,16 +25,18 @@ public class CrmEndpoint {
 
   }
 
-  public List<Contact> findAllContacts() {
-    return contactRepository.findAll();
+  public static class CrmData {
+    public List<Contact> contacts;
+    public List<Company> companies;
+    public List<Status> statuses;
   }
 
-  public List<Company> findAllCompanies() {
-    return companyRepository.findAll();
-  }
-
-  public List<Status> getStatuses() {
-    return statusRepository.findAll();
+  public CrmData getCrmData() {
+    var crmData = new CrmData();
+    crmData.contacts = contactRepository.findAll();
+    crmData.companies = companyRepository.findAll();
+    crmData.statuses = statusRepository.findAll();
+    return crmData;
   }
 
   public Contact saveContact(Contact contact) {

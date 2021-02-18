@@ -10,9 +10,9 @@ import {
   ConnectionState,
   ConnectionStateStore,
 } from "@vaadin/flow-frontend/ConnectionState";
-import { autorun, makeAutoObservable, observable, runInAction } from "mobx";
+import { makeAutoObservable, observable, runInAction } from "mobx";
 import { cacheable, clearCache } from "./cacheable";
-import { trace } from "mobx";
+import CrmDataModel from "Frontend/generated/com/vaadin/crm/data/endpoint/CrmEndpoint/CrmDataModel";
 
 export class AppState {
   loggedIn = true;
@@ -38,6 +38,7 @@ export class AppState {
       {
         initFromServer: false,
         connectionStateListener: false,
+        setupOfflineListener: false,
         contacts: observable.shallow,
         companies: observable.shallow,
         statuses: observable.shallow,
@@ -62,18 +63,16 @@ export class AppState {
   }
 
   async initFromServer() {
-    const contacts = await cacheable(endpoint.findAllContacts, "contacts", []);
-    const companies = await cacheable(
-      endpoint.findAllCompanies,
-      "companies",
-      []
+    const data = await cacheable(
+      endpoint.getCrmData,
+      "crm",
+      CrmDataModel.createEmptyValue()
     );
-    const statuses = await cacheable(endpoint.getStatuses, "statuses", []);
 
     runInAction(() => {
-      this.contacts = contacts;
-      this.companies = companies;
-      this.statuses = statuses;
+      this.contacts = data.contacts;
+      this.companies = data.companies;
+      this.statuses = data.statuses;
     });
   }
 
@@ -104,7 +103,6 @@ export class AppState {
     const result = await serverLogin(username, password);
     if (!result.error) {
       this.setLoggedIn(true);
-      this.initFromServer();
     } else {
       throw new Error(result.errorMessage || "Login failed");
     }
@@ -126,9 +124,15 @@ export class AppState {
 
   private setLoggedIn(loggedIn: boolean) {
     this.loggedIn = loggedIn;
+    if (loggedIn) {
+      this.initFromServer();
+    }
   }
 
   private setOffline(offline: boolean) {
+    if (this.offline && !offline) {
+      this.initFromServer();
+    }
     this.offline = offline;
   }
 
