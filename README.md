@@ -1,3 +1,3 @@
 # Vaadin Fusion tutorial app
 
-Requires Java 11. Run with `mvn`
+Requires Java 15. Run with `mvn`
