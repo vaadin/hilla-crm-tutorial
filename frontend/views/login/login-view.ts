@@ -25,9 +25,12 @@ export class LoginView extends View {
         no-forgot-password
         @login=${this.login}
         .error=${this.error}
+        ?disabled=${appState.offline}
       >
       </vaadin-login-form>
-      <b>Log in with: user/userpass</b>
+      ${appState.offline
+        ? html` <b>You are offline. Login is only available while online.</b> `
+        : html` <b>Log in with: user/userpass</b> `}
     `;
   }
 

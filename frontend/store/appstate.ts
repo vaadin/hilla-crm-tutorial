@@ -11,6 +11,8 @@ import {
   ConnectionStateStore,
 } from "@vaadin/flow-frontend/ConnectionState";
 import { autorun, makeAutoObservable, observable, runInAction } from "mobx";
+import { cacheable, clearCache } from "./cacheable";
+import { trace } from "mobx";
 
 export class AppState {
   loggedIn = true;
@@ -38,17 +40,13 @@ export class AppState {
         connectionStateListener: false,
         contacts: observable.shallow,
         companies: observable.shallow,
+        statuses: observable.shallow,
       },
       { autoBind: true }
     );
 
     this.setupOfflineListener();
-
-    autorun(() => {
-      if (this.loggedIn) {
-        this.initFromServer();
-      }
-    });
+    this.initFromServer();
   }
 
   setupOfflineListener() {
@@ -64,19 +62,19 @@ export class AppState {
   }
 
   async initFromServer() {
-    try {
-      const contacts = await endpoint.findAllContacts();
-      const companies = await endpoint.findAllCompanies();
-      const statuses = await endpoint.getStatuses();
+    const contacts = await cacheable(endpoint.findAllContacts, "contacts", []);
+    const companies = await cacheable(
+      endpoint.findAllCompanies,
+      "companies",
+      []
+    );
+    const statuses = await cacheable(endpoint.getStatuses, "statuses", []);
 
-      runInAction(() => {
-        this.contacts = contacts;
-        this.companies = companies;
-        this.statuses = statuses;
-      });
-    } catch (e) {
-      // not logged in
-    }
+    runInAction(() => {
+      this.contacts = contacts;
+      this.companies = companies;
+      this.statuses = statuses;
+    });
   }
 
   async saveContact(contact: Contact) {
@@ -106,6 +104,7 @@ export class AppState {
     const result = await serverLogin(username, password);
     if (!result.error) {
       this.setLoggedIn(true);
+      this.initFromServer();
     } else {
       throw new Error(result.errorMessage || "Login failed");
     }
@@ -113,6 +112,7 @@ export class AppState {
 
   async logout() {
     this.setLoggedIn(false);
+    clearCache();
     await serverLogout();
   }
 

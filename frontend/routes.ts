@@ -20,7 +20,7 @@ export const views: ViewRoute[] = [
   {
     path: "",
     component: "list-view",
-    title: "List",
+    title: "Contacts",
   },
   {
     path: "dashboard",

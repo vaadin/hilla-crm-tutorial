@@ -22,7 +22,9 @@ export class MainLayout extends Layout {
         <header slot="navbar" class="full-width v-flex v-items-center v-ph-m">
           <vaadin-drawer-toggle></vaadin-drawer-toggle>
           <h1 class="v-font-size-l v-m-m">Vaadin CRM</h1>
-          <a href="/logout" class="v-ms-a">Log out</a>
+          <a href="/logout" class="v-ms-a" ?hidden=${appState.offline}
+            >Log out</a
+          >
         </header>
 
         <div slot="drawer">

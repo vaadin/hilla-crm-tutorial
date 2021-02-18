@@ -3,6 +3,7 @@ import { customElement, html } from "lit-element";
 import { View } from "../view";
 import "@vaadin/vaadin-charts";
 import { dashboardViewStore } from "./dashboard-view-store";
+import { appState } from "Frontend/store/appstate";
 
 @customElement("dashboard-view")
 export class DashboardView extends View {
@@ -17,15 +18,25 @@ export class DashboardView extends View {
         ${dashboardViewStore.contactCount} contacts
       </div>
 
-      ${dashboardViewStore.companyStats.length === 0
-        ? html` <p>Loading stats...</p> `
-        : html`
-            <vaadin-chart type="pie">
-              <vaadin-chart-series
-                .values=${dashboardViewStore.companyStats}
-              ></vaadin-chart-series>
-            </vaadin-chart>
-          `}
+      ${this.getCompanyStats()}
     `;
+  }
+
+  getCompanyStats() {
+    if (dashboardViewStore.companyStats.length === 0) {
+      if (appState.offline) {
+        return html`<p>Connect to the internet to view stats</p>`;
+      } else {
+        return html`<p>Loading stats...</p>`;
+      }
+    } else {
+      return html`
+        <vaadin-chart type="pie">
+          <vaadin-chart-series
+            .values=${dashboardViewStore.companyStats}
+          ></vaadin-chart-series>
+        </vaadin-chart>
+      `;
+    }
   }
 }
