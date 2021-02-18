@@ -1,0 +1,4 @@
+{
+    "lit-plugin.strict": true,
+    "java.configuration.updateBuildConfiguration": "automatic"
+}
