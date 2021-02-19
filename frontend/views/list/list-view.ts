@@ -14,9 +14,9 @@ export class ListView extends View {
   connectedCallback() {
     super.connectedCallback();
     this.classList.add(
-      "v-p-m",
       "v-flex",
       "v-flex-column",
+      "v-p-m",
       "gap-s",
       "full-size"
     );
@@ -67,7 +67,7 @@ export class ListView extends View {
           ></vaadin-grid-column>
         </vaadin-grid>
         <contact-form
-          class="v-flex v-flex-column gap-s"
+          class="v-flex v-flex-column v-self-start gap-s"
           ?hidden=${!listViewStore.selectedContact}
         ></contact-form>
       </div>
@@ -87,9 +87,5 @@ export class ListView extends View {
       return;
     }
     listViewStore.setSelectedContact(e.detail.value);
-  }
-
-  editNew() {
-    listViewStore.editNew();
   }
 }

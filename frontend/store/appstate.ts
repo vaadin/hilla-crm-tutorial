@@ -114,11 +114,11 @@ export class AppState {
     await serverLogout();
   }
 
-  showSuccess(message: string) {
+  private showSuccess(message: string) {
     this.showMessage(message, false);
   }
 
-  showError(message: string) {
+  private showError(message: string) {
     this.showMessage(message, true);
   }
 
@@ -130,6 +130,7 @@ export class AppState {
   }
 
   private setOffline(offline: boolean) {
+    // Refresh from server when going online
     if (this.offline && !offline) {
       this.initFromServer();
     }
