@@ -1,5 +1,4 @@
 import "@vaadin/vaadin-grid/src/vaadin-grid-column";
-import "./list-view.global.css";
 import { customElement, html } from "lit-element";
 import { View } from "../view";
 import "@vaadin/vaadin-text-field";
