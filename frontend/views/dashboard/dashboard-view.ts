@@ -9,12 +9,12 @@ import { appState } from "Frontend/store/appstate";
 export class DashboardView extends View {
   connectedCallback() {
     super.connectedCallback();
-    this.classList.add("v-flex", "v-flex-column", "v-items-center", "v-pt-xl");
+    this.classList.add("flex", "flex-column", "items-center", "pt-xl");
   }
 
   render() {
     return html`
-      <div class="v-font-size-xl v-mb-xl">
+      <div class="font-size-xl mb-xl">
         ${dashboardViewStore.contactCount} contacts
       </div>
 
