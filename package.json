@@ -52,6 +52,7 @@
     "cdigit": "2.5.6",
     "chance": "1.1.7",
     "lit-element": "2.3.1",
+    "lumo-css-framework": "^1.0.1",
     "mobx": "^6.1.5",
     "open": "^7.2.1"
   },
@@ -163,6 +164,6 @@
       "workbox-precaching": "5.1.4",
       "workbox-webpack-plugin": "5.1.4"
     },
-    "hash": "20592eb673aaeee2a7094125cb4608eb5b70ad1e4ddb99cf3f5d64dfa24e40f9"
+    "hash": "8445da3e375ece89b4423b330b5ddb9f1394a47712cfc37dbc87ade347f0b287"
   }
 }

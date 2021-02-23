@@ -10,12 +10,7 @@ export class LoginView extends View {
 
   connectedCallback() {
     super.connectedCallback();
-    this.classList.add(
-      "v-flex",
-      "v-flex-column",
-      "v-items-center",
-      "v-justify-center"
-    );
+    this.classList.add("flex", "flex-column", "items-center", "justify-center");
   }
 
   render() {

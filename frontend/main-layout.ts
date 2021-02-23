@@ -18,23 +18,21 @@ export class MainLayout extends Layout {
   `;
   render() {
     return html`
-      <vaadin-app-layout class="full-size">
-        <header slot="navbar" class="full-width v-flex v-items-center v-ph-m">
+      <vaadin-app-layout class="h-full">
+        <header slot="navbar" class="w-full flex items-center ph-m">
           <vaadin-drawer-toggle></vaadin-drawer-toggle>
-          <h1 class="v-font-size-l v-m-m">Vaadin CRM</h1>
-          <a href="/logout" class="v-ms-a" ?hidden=${appState.offline}
-            >Log out</a
-          >
+          <h1 class="font-size-l m-m">Vaadin CRM</h1>
+          <a href="/logout" class="ms-a" ?hidden=${appState.offline}>Log out</a>
         </header>
 
         <div slot="drawer">
-          <div class="nav full-height v-mh-m v-mv-l gap-m v-flex v-flex-column">
+          <div class="flex flex-column h-full mh-m mv-l sb-m ">
             ${views.map(
               (view) => html` <a href=${view.path}> ${view.title} </a> `
             )}
           </div>
         </div>
-        <div class="content full-height">
+        <div class="h-full">
           <slot><!-- views go here --></slot>
         </div>
       </vaadin-app-layout>
