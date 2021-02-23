@@ -45,7 +45,7 @@ export class ListView extends View {
           >Add Contact</vaadin-button
         >
       </div>
-      <div class="content flex se-s h-full">
+      <div class="content flex se-m h-full">
         <vaadin-grid
           class="grid h-full"
           .items=${listViewStore.filteredContacts}
