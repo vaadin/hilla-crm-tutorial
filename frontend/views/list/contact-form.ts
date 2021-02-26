@@ -3,7 +3,7 @@ import { customElement, html } from "lit-element";
 import "@vaadin/vaadin-text-field";
 import "@vaadin/vaadin-combo-box";
 import "@vaadin/vaadin-button";
-import { listViewStore } from "../list-view-store";
+import { listViewStore } from "./list-view-store";
 import { Binder, field } from "Frontend/../target/flow-frontend/form";
 import ContactModel from "Frontend/generated/com/vaadin/crm/data/entity/ContactModel";
 import { appState } from "Frontend/store/appstate";

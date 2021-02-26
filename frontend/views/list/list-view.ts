@@ -4,7 +4,7 @@ import "@vaadin/vaadin-text-field";
 import "@vaadin/vaadin-button";
 import "@vaadin/vaadin-grid";
 import "@vaadin/vaadin-grid/src/vaadin-grid-column";
-import "./form/contact-form";
+import "./contact-form";
 import { listViewStore } from "./list-view-store";
 import { appState } from "Frontend/store/appstate";
 
