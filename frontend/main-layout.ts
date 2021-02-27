@@ -2,7 +2,6 @@ import { css, customElement, html } from "lit-element";
 import { Layout } from "./views/view";
 import "@vaadin/vaadin-app-layout";
 import "@vaadin/vaadin-app-layout/vaadin-drawer-toggle";
-import "@vaadin/vaadin-notification";
 
 import { views } from "./routes";
 import { uiStore } from "./store/root-store";
@@ -36,17 +35,6 @@ export class MainLayout extends Layout {
           <slot><!-- views go here --></slot>
         </div>
       </vaadin-app-layout>
-      <vaadin-notification
-        theme=${uiStore.message.error ? "error" : "contrast"}
-        position="bottom-start"
-        .opened=${uiStore.message.open}
-        .renderer=${(root: HTMLElement) =>
-          (root.textContent = uiStore.message.text)}
-      ></vaadin-notification>
     `;
-  }
-
-  isActive(path: string) {
-    return location.pathname === "/" + path ? "active" : "";
   }
 }

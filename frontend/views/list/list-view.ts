@@ -4,6 +4,7 @@ import "@vaadin/vaadin-text-field";
 import "@vaadin/vaadin-button";
 import "@vaadin/vaadin-grid";
 import "@vaadin/vaadin-grid/src/vaadin-grid-column";
+import "@vaadin/vaadin-notification";
 import "./contact-form";
 import { listViewStore } from "./list-view-store";
 import { uiStore } from "Frontend/store/root-store";
@@ -71,6 +72,13 @@ export class ListView extends View {
           ?hidden=${!listViewStore.selectedContact}
         ></contact-form>
       </div>
+      <vaadin-notification
+        theme=${uiStore.message.error ? "error" : "contrast"}
+        position="bottom-start"
+        .opened=${uiStore.message.open}
+        .renderer=${(root: HTMLElement) =>
+          (root.textContent = uiStore.message.text)}
+      ></vaadin-notification>
     `;
   }
 
