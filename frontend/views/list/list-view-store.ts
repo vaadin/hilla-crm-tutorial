@@ -1,16 +1,18 @@
 import Contact from "Frontend/generated/com/vaadin/crm/data/entity/Contact";
 import ContactModel from "Frontend/generated/com/vaadin/crm/data/entity/ContactModel";
-import { AppState, appState } from "Frontend/store/appstate";
+import { CrmStore } from "Frontend/store/crm-store";
+import { rootStore } from "Frontend/store/root-store";
 import { makeAutoObservable, observable } from "mobx";
 
 class ListViewStore {
   selectedContact?: Contact = undefined;
   filterText = "";
 
-  constructor(private appState: AppState) {
+  constructor(public crmStore: CrmStore) {
     makeAutoObservable(
       this,
       {
+        crmStore: false,
         selectedContact: observable.ref,
       },
       { autoBind: true }
@@ -34,24 +36,24 @@ class ListViewStore {
   }
 
   async save(contact: Contact) {
-    await appState.saveContact(contact);
+    await this.crmStore.saveContact(contact);
     this.cancelEdit();
   }
 
   async delete() {
     if (this.selectedContact) {
-      await appState.deleteContact(this.selectedContact);
+      await this.crmStore.deleteContact(this.selectedContact);
       this.cancelEdit();
     }
   }
 
   get filteredContacts() {
     const filter = new RegExp(this.filterText, "i");
-    const contacts = this.appState.contacts;
+    const contacts = this.crmStore.contacts;
     return contacts.filter((contact) =>
       filter.test(`${contact.firstName} ${contact.lastName}`)
     );
   }
 }
 
-export const listViewStore = new ListViewStore(appState);
+export const listViewStore = new ListViewStore(rootStore.crmStore);

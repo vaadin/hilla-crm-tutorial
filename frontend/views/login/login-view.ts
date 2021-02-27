@@ -1,4 +1,4 @@
-import { appState } from "Frontend/store/appstate";
+import { rootStore, uiStore } from "Frontend/store/root-store";
 import { customElement, html, internalProperty } from "lit-element";
 import "@vaadin/vaadin-login/vaadin-login-form";
 import { View } from "../view";
@@ -20,10 +20,10 @@ export class LoginView extends View {
         no-forgot-password
         @login=${this.login}
         .error=${this.error}
-        ?disabled=${appState.offline}
+        ?disabled=${uiStore.offline}
       >
       </vaadin-login-form>
-      ${appState.offline
+      ${uiStore.offline
         ? html` <b>You are offline. Login is only available while online.</b> `
         : html` <b>Log in with: user/userpass</b> `}
     `;
@@ -31,7 +31,7 @@ export class LoginView extends View {
 
   async login(e: CustomEvent) {
     try {
-      await appState.login(e.detail.username, e.detail.password);
+      await uiStore.login(e.detail.username, e.detail.password);
     } catch (e) {
       this.error = true;
     }

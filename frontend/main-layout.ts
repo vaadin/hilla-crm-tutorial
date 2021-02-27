@@ -5,7 +5,7 @@ import "@vaadin/vaadin-app-layout/vaadin-drawer-toggle";
 import "@vaadin/vaadin-notification";
 
 import { views } from "./routes";
-import { appState } from "./store/appstate";
+import { uiStore } from "./store/root-store";
 
 @customElement("main-layout")
 export class MainLayout extends Layout {
@@ -22,7 +22,7 @@ export class MainLayout extends Layout {
         <header slot="navbar" class="w-full flex items-center ph-m">
           <vaadin-drawer-toggle></vaadin-drawer-toggle>
           <h1 class="font-size-l m-m">Vaadin CRM</h1>
-          <a href="/logout" class="ms-a" ?hidden=${appState.offline}>Log out</a>
+          <a href="/logout" class="ms-a" ?hidden=${uiStore.offline}>Log out</a>
         </header>
 
         <div slot="drawer">
@@ -37,11 +37,11 @@ export class MainLayout extends Layout {
         </div>
       </vaadin-app-layout>
       <vaadin-notification
-        theme=${appState.message.error ? "error" : "contrast"}
+        theme=${uiStore.message.error ? "error" : "contrast"}
         position="bottom-start"
-        .opened=${appState.message.open}
+        .opened=${uiStore.message.open}
         .renderer=${(root: HTMLElement) =>
-          (root.textContent = appState.message.text)}
+          (root.textContent = uiStore.message.text)}
       ></vaadin-notification>
     `;
   }

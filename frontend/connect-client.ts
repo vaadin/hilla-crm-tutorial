@@ -1,7 +1,7 @@
 import { MiddlewareContext } from "@vaadin/flow-frontend";
 import { MiddlewareNext } from "@vaadin/flow-frontend";
 import { ConnectClient } from "@vaadin/flow-frontend";
-import { appState } from "./store/appstate";
+import { uiStore } from "./store/root-store";
 
 const client = new ConnectClient({
   prefix: "connect",
@@ -10,7 +10,7 @@ const client = new ConnectClient({
       const response = await next(context);
       // Log out if the session has expired
       if (response.status === 401) {
-        appState.logout();
+        uiStore.logout();
       }
       return response;
     },

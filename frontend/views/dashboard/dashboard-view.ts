@@ -3,7 +3,7 @@ import { customElement, html } from "lit-element";
 import { View } from "../view";
 import "@vaadin/vaadin-charts";
 import { dashboardViewStore } from "./dashboard-view-store";
-import { appState } from "Frontend/store/appstate";
+import { uiStore } from "Frontend/store/root-store";
 
 @customElement("dashboard-view")
 export class DashboardView extends View {
@@ -24,7 +24,7 @@ export class DashboardView extends View {
 
   getCompanyStats() {
     if (dashboardViewStore.companyStats.length === 0) {
-      if (appState.offline) {
+      if (uiStore.offline) {
         return html`<p>Connect to the internet to view stats</p>`;
       } else {
         return html`<p>Loading stats...</p>`;

@@ -6,7 +6,7 @@ import "@vaadin/vaadin-grid";
 import "@vaadin/vaadin-grid/src/vaadin-grid-column";
 import "./contact-form";
 import { listViewStore } from "./list-view-store";
-import { appState } from "Frontend/store/appstate";
+import { uiStore } from "Frontend/store/root-store";
 
 @customElement("list-view")
 export class ListView extends View {
@@ -41,7 +41,7 @@ export class ListView extends View {
         ></vaadin-text-field>
         <vaadin-button
           @click=${listViewStore.editNew}
-          ?disabled=${appState.offline}
+          ?disabled=${uiStore.offline}
           >Add Contact</vaadin-button
         >
       </div>

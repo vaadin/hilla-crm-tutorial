@@ -2,11 +2,11 @@ import { Commands, Context, Route, Router } from "@vaadin/router";
 import "./main-layout.ts";
 import "./views/list/list-view";
 import "./views/login/login-view";
-import { appState } from "./store/appstate";
+import { uiStore } from "./store/root-store";
 import { autorun } from "mobx";
 
 const authGuard = async (context: Context, commands: Commands) => {
-  if (!appState.loggedIn) {
+  if (!uiStore.loggedIn) {
     // Save requested path
     sessionStorage.setItem("login-redirect-path", context.pathname);
     return commands.redirect("/login");
@@ -37,7 +37,7 @@ export const routes: ViewRoute[] = [
   {
     path: "logout",
     action: (_: Context, commands: Commands) => {
-      appState.logout();
+      uiStore.logout();
       return commands.redirect("/login");
     },
   },
@@ -51,7 +51,7 @@ export const routes: ViewRoute[] = [
 
 // Catch logins and logouts, redirect appropriately
 autorun(() => {
-  if (appState.loggedIn) {
+  if (uiStore.loggedIn) {
     Router.go(sessionStorage.getItem("login-redirect-path") || "/");
   } else {
     if (location.pathname !== "/login") {
