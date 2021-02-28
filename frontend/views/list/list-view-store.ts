@@ -4,7 +4,7 @@ import { crmStore } from "Frontend/store/root-store";
 import { makeAutoObservable, observable } from "mobx";
 
 class ListViewStore {
-  selectedContact?: Contact = undefined;
+  selectedContact: Contact | null = null;
   filterText = "";
 
   constructor() {
@@ -28,7 +28,7 @@ class ListViewStore {
   }
 
   cancelEdit() {
-    this.selectedContact = undefined;
+    this.selectedContact = null;
   }
 
   async save(contact: Contact) {
