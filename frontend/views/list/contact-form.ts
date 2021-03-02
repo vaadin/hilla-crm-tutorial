@@ -41,7 +41,6 @@ export class ContactForm extends View {
         label="Status"
         .items=${crmStore.statuses}
         item-label-path="name"
-        ?disabled=${uiStore.offline}
         ...=${field(model.status)}
       ></vaadin-combo-box>
 
@@ -49,7 +48,6 @@ export class ContactForm extends View {
         label="Company"
         item-label-path="name"
         .items=${crmStore.companies}
-        ?disabled=${uiStore.offline}
         ...=${field(model.company)}
       >
       </vaadin-combo-box>
