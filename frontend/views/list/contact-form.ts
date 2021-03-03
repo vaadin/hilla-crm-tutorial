@@ -67,8 +67,8 @@ export class ContactForm extends View {
           Delete</vaadin-button
         >
         <vaadin-button theme="tertiary" @click=${listViewStore.cancelEdit}>
-          Cancel</vaadin-button
-        >
+          Cancel
+        </vaadin-button>
       </div>
     `;
   }

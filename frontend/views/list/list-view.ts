@@ -4,9 +4,9 @@ import "@vaadin/vaadin-text-field";
 import "@vaadin/vaadin-button";
 import "@vaadin/vaadin-grid";
 import "@vaadin/vaadin-grid/src/vaadin-grid-column";
-import "@vaadin/vaadin-notification";
 import "./contact-form";
 import { listViewStore } from "./list-view-store";
+import "@vaadin/vaadin-notification";
 import { uiStore } from "Frontend/store/root-store";
 
 @customElement("list-view")

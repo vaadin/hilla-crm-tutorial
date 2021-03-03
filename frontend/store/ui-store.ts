@@ -11,15 +11,15 @@ import { clearCache } from "./cacheable";
 import { makeAutoObservable, runInAction } from "mobx";
 import { crmStore } from "./root-store";
 
+class Message {
+  constructor(public text = "", public error = false, public open = false) {}
+}
+
 export class UiStore {
   loggedIn = true;
   offline = false;
 
-  message = {
-    text: "",
-    error: false,
-    open: false,
-  };
+  message = new Message();
 
   connectionStateStore?: ConnectionStateStore;
   constructor() {
@@ -75,6 +75,11 @@ export class UiStore {
     this.showMessage(message, true);
   }
 
+  private showMessage(text: string, error: boolean) {
+    this.message = new Message(text, error, true);
+    setTimeout(() => runInAction(() => (this.message = new Message())), 5000);
+  }
+
   private setLoggedIn(loggedIn: boolean) {
     this.loggedIn = loggedIn;
     if (loggedIn) {
@@ -88,14 +93,5 @@ export class UiStore {
       crmStore.initFromServer();
     }
     this.offline = offline;
-  }
-
-  private showMessage(text: string, error: boolean) {
-    this.message = {
-      text,
-      error,
-      open: true,
-    };
-    setTimeout(() => runInAction(() => (this.message.open = false)), 5000);
   }
 }
