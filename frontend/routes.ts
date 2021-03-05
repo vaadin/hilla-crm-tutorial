@@ -2,7 +2,7 @@ import { Commands, Context, Route, Router } from "@vaadin/router";
 import "./main-layout.ts";
 import "./views/list/list-view";
 import "./views/login/login-view";
-import { uiStore } from "./store/root-store";
+import { uiStore } from "./stores/app-store";
 import { autorun } from "mobx";
 
 const authGuard = async (context: Context, commands: Commands) => {

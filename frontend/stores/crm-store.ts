@@ -6,7 +6,7 @@ import Status from "Frontend/generated/com/vaadin/crm/data/entity/Status";
 import * as endpoint from "Frontend/generated/CrmEndpoint";
 import CrmDataModel from "Frontend/generated/com/vaadin/crm/data/endpoint/CrmEndpoint/CrmDataModel";
 import { cacheable } from "./cacheable";
-import { uiStore } from "./root-store";
+import { uiStore } from "./app-store";
 
 export class CrmStore {
   contacts: Contact[] = [];

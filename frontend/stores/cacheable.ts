@@ -1,6 +1,3 @@
-import { autorun } from "mobx";
-import { rootStore } from "./root-store";
-
 // keeps track of the data to be cleared
 const keysToClearOnLogout: Set<string> = new Set<string>();
 

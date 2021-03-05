@@ -1,7 +1,7 @@
 import { MiddlewareContext } from "@vaadin/flow-frontend";
 import { MiddlewareNext } from "@vaadin/flow-frontend";
 import { ConnectClient } from "@vaadin/flow-frontend";
-import { uiStore } from "./store/root-store";
+import { uiStore } from "./stores/app-store";
 
 const client = new ConnectClient({
   prefix: "connect",

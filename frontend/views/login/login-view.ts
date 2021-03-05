@@ -1,4 +1,4 @@
-import { rootStore, uiStore } from "Frontend/store/root-store";
+import { uiStore } from "Frontend/stores/app-store";
 import { customElement, html, internalProperty } from "lit-element";
 import "@vaadin/vaadin-login/vaadin-login-form";
 import { View } from "../view";

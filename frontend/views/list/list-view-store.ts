@@ -1,6 +1,6 @@
 import Contact from "Frontend/generated/com/vaadin/crm/data/entity/Contact";
 import ContactModel from "Frontend/generated/com/vaadin/crm/data/entity/ContactModel";
-import { crmStore } from "Frontend/store/root-store";
+import { crmStore } from "Frontend/stores/app-store";
 import { makeAutoObservable, observable } from "mobx";
 
 class ListViewStore {

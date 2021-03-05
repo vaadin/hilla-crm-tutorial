@@ -4,7 +4,7 @@ import "@vaadin/vaadin-app-layout";
 import "@vaadin/vaadin-app-layout/vaadin-drawer-toggle";
 
 import { views } from "./routes";
-import { uiStore } from "./store/root-store";
+import { uiStore } from "./stores/app-store";
 
 @customElement("main-layout")
 export class MainLayout extends Layout {

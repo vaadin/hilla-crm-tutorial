@@ -1,4 +1,4 @@
-import { crmStore } from "Frontend/store/root-store";
+import { crmStore } from "Frontend/stores/app-store";
 import { makeAutoObservable } from "mobx";
 
 class DashboardViewStore {

@@ -9,7 +9,7 @@ import {
 import { clearCache } from "./cacheable";
 
 import { makeAutoObservable, runInAction } from "mobx";
-import { crmStore } from "./root-store";
+import { crmStore } from "./app-store";
 
 class Message {
   constructor(public text = "", public error = false, public open = false) {}
