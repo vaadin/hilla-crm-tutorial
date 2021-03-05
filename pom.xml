@@ -9,7 +9,7 @@
 
   <properties>
     <java.version>15</java.version>
-    <vaadin.version>19.0.0.beta3</vaadin.version>
+    <vaadin.version>19.0.0.rc1</vaadin.version>
   </properties>
 
   <parent>
