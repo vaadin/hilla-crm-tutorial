@@ -2,8 +2,9 @@ import { Commands, Context, Route, Router } from "@vaadin/router";
 import "./main-layout.ts";
 import "./views/list/list-view";
 import "./views/login/login-view";
-import { uiStore } from "./stores/app-store";
 import { autorun } from "mobx";
+
+import { uiStore } from "./stores/app-store";
 
 const authGuard = async (context: Context, commands: Commands) => {
   if (!uiStore.loggedIn) {

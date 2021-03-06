@@ -1,5 +1,4 @@
-// keeps track of the data to be cleared
-const keysToClearOnLogout: Set<string> = new Set<string>();
+const CACHE_NAME = "crm-cache";
 
 export async function cacheable<T>(
   fn: () => Promise<T>,
@@ -11,19 +10,25 @@ export async function cacheable<T>(
     // retrive the data from backend.
     result = await fn();
     // save the data to localStorage.
-    localStorage.setItem(key, JSON.stringify(result));
-    // register the data to be cleaned when a user logs out
-    keysToClearOnLogout.add(key);
+    const cache = getCache();
+    cache[key] = result;
+    localStorage.setItem(CACHE_NAME, JSON.stringify(cache));
   } catch {
     // if failed to retrieve the data from backend, try localStorage.
-    const cached = localStorage.getItem(key);
+    const cache = getCache();
+    const cached = cache[key];
     // use the cached data if available, otherwise the default value.
-    result = cached ? JSON.parse(cached) : defaultValue;
+    result = cached ? cached : defaultValue;
   }
 
   return result;
 }
 
+function getCache(): any {
+  const cache = localStorage.getItem(CACHE_NAME) || "{}";
+  return JSON.parse(cache);
+}
+
 export function clearCache() {
-  keysToClearOnLogout.forEach((key) => localStorage.removeItem(key));
+  localStorage.removeItem(CACHE_NAME);
 }

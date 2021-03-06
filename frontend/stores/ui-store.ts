@@ -17,22 +17,23 @@ class Message {
 
 export class UiStore {
   loggedIn = true;
+  message = new Message();
   offline = false;
 
-  message = new Message();
-
-  connectionStateStore?: ConnectionStateStore;
   constructor() {
     makeAutoObservable(
       this,
       {
         connectionStateListener: false,
+        connectionStateStore: false,
         setupOfflineListener: false,
       },
       { autoBind: true }
     );
     this.setupOfflineListener();
   }
+
+  connectionStateStore?: ConnectionStateStore;
 
   connectionStateListener = () => {
     this.setOffline(
@@ -52,6 +53,14 @@ export class UiStore {
     }
   }
 
+  private setOffline(offline: boolean) {
+    // Refresh from server when going online
+    if (this.offline && !offline) {
+      crmStore.initFromServer();
+    }
+    this.offline = offline;
+  }
+
   async login(username: string, password: string) {
     const result = await serverLogin(username, password);
     if (!result.error) {
@@ -62,9 +71,16 @@ export class UiStore {
   }
 
   async logout() {
+    await serverLogout();
     this.setLoggedIn(false);
     clearCache();
-    await serverLogout();
+  }
+
+  private setLoggedIn(loggedIn: boolean) {
+    this.loggedIn = loggedIn;
+    if (loggedIn) {
+      crmStore.initFromServer();
+    }
   }
 
   showSuccess(message: string) {
@@ -78,20 +94,5 @@ export class UiStore {
   private showMessage(text: string, error: boolean) {
     this.message = new Message(text, error, true);
     setTimeout(() => runInAction(() => (this.message = new Message())), 5000);
-  }
-
-  private setLoggedIn(loggedIn: boolean) {
-    this.loggedIn = loggedIn;
-    if (loggedIn) {
-      crmStore.initFromServer();
-    }
-  }
-
-  private setOffline(offline: boolean) {
-    // Refresh from server when going online
-    if (this.offline && !offline) {
-      crmStore.initFromServer();
-    }
-    this.offline = offline;
   }
 }

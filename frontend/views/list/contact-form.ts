@@ -40,6 +40,7 @@ export class ContactForm extends View {
       <vaadin-combo-box
         label="Status"
         .items=${crmStore.statuses}
+        ?disabled=${uiStore.offline}
         item-label-path="name"
         ...=${field(model.status)}
       ></vaadin-combo-box>
@@ -48,6 +49,7 @@ export class ContactForm extends View {
         label="Company"
         item-label-path="name"
         .items=${crmStore.companies}
+        ?disabled=${uiStore.offline}
         ...=${field(model.company)}
       >
       </vaadin-combo-box>
@@ -64,8 +66,8 @@ export class ContactForm extends View {
           @click=${listViewStore.delete}
           ?disabled=${!this.binder.value.id || uiStore.offline}
         >
-          Delete</vaadin-button
-        >
+          Delete
+        </vaadin-button>
         <vaadin-button theme="tertiary" @click=${listViewStore.cancelEdit}>
           Cancel
         </vaadin-button>
