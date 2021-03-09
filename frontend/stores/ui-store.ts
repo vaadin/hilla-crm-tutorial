@@ -1,7 +1,7 @@
 import {
   ConnectionState,
   ConnectionStateStore,
-} from "Frontend/../target/flow-frontend/ConnectionState";
+} from "@vaadin/flow-frontend/ConnectionState";
 import {
   login as serverLogin,
   logout as serverLogout,
