@@ -1,10 +1,6 @@
 @import "./views/list-view.css";
 @import "lumo-css-framework/classes.css";
 
-* {
-  box-sizing: border-box;
-}
-
 [hidden] {
   display: none !important;
 }

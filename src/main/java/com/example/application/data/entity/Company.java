@@ -1,4 +1,4 @@
-package com.vaadin.crm.data.entity;
+package com.example.application.data.entity;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
-import com.vaadin.crm.data.AbstractEntity;
+import com.example.application.data.AbstractEntity;
 
 @Entity
 public class Company extends AbstractEntity {

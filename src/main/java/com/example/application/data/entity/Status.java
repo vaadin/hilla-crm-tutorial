@@ -1,8 +1,8 @@
-package com.vaadin.crm.data.entity;
+package com.example.application.data.entity;
 
 import javax.persistence.Entity;
 
-import com.vaadin.crm.data.AbstractEntity;
+import com.example.application.data.AbstractEntity;
 
 @Entity
 public class Status extends AbstractEntity {

@@ -1,16 +1,18 @@
-package com.vaadin.crm.data.endpoint;
+package com.example.application.data.endpoint;
 
 import java.util.List;
 
-import com.vaadin.crm.data.entity.Company;
-import com.vaadin.crm.data.entity.Contact;
-import com.vaadin.crm.data.entity.Status;
-import com.vaadin.crm.data.service.CompanyRepository;
-import com.vaadin.crm.data.service.ContactRepository;
-import com.vaadin.crm.data.service.StatusRepository;
+import com.example.application.data.entity.Company;
+import com.example.application.data.entity.Contact;
+import com.example.application.data.entity.Status;
+import com.example.application.data.service.CompanyRepository;
+import com.example.application.data.service.ContactRepository;
+import com.example.application.data.service.StatusRepository;
 import com.vaadin.flow.server.connect.Endpoint;
+import com.vaadin.flow.server.connect.auth.AnonymousAllowed;
 
 @Endpoint
+@AnonymousAllowed
 public class CrmEndpoint {
 
   private ContactRepository contactRepository;

@@ -1,16 +1,16 @@
-package com.vaadin.crm.data.generator;
+package com.example.application.data.generator;
 
 import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.vaadin.crm.data.entity.Company;
-import com.vaadin.crm.data.entity.Contact;
-import com.vaadin.crm.data.entity.Status;
-import com.vaadin.crm.data.service.CompanyRepository;
-import com.vaadin.crm.data.service.ContactRepository;
-import com.vaadin.crm.data.service.StatusRepository;
+import com.example.application.data.entity.Company;
+import com.example.application.data.entity.Contact;
+import com.example.application.data.entity.Status;
+import com.example.application.data.service.StatusRepository;
+import com.example.application.data.service.CompanyRepository;
+import com.example.application.data.service.ContactRepository;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 
 import org.slf4j.Logger;

@@ -1,5 +1,5 @@
 
-package com.vaadin.crm.data.entity;
+package com.example.application.data.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -8,8 +8,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.example.application.data.AbstractEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.vaadin.crm.data.AbstractEntity;
 
 @Entity
 public class Contact extends AbstractEntity {

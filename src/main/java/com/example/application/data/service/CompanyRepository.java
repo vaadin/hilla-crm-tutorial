@@ -1,6 +1,6 @@
-package com.vaadin.crm.data.service;
+package com.example.application.data.service;
 
-import com.vaadin.crm.data.entity.Company;
+import com.example.application.data.entity.Company;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

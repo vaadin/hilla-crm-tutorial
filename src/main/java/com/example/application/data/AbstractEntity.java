@@ -1,4 +1,4 @@
-package com.vaadin.crm.data;
+package com.example.application.data;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
