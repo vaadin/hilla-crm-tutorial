@@ -41,18 +41,18 @@ import '@vaadin/vaadin-lumo-styles/color.js';
 import '@vaadin/vaadin-lumo-styles/badge.js';
 
 window.Vaadin = window.Vaadin || {};
-window.Vaadin['_vaadintheme_vaadincrm_globalCss'] = window.Vaadin['_vaadintheme_vaadincrm_globalCss'] || [];
+window.Vaadin['_vaadintheme_fusioncrmtutorial_globalCss'] = window.Vaadin['_vaadintheme_fusioncrmtutorial_globalCss'] || [];
 export const applyTheme = (target) => {
   
-  const injectGlobal = (window.Vaadin['_vaadintheme_vaadincrm_globalCss'].length === 0) || (!window.Vaadin['_vaadintheme_vaadincrm_globalCss'].includes(target) && target !== document);
+  const injectGlobal = (window.Vaadin['_vaadintheme_fusioncrmtutorial_globalCss'].length === 0) || (!window.Vaadin['_vaadintheme_fusioncrmtutorial_globalCss'].includes(target) && target !== document);
   if (injectGlobal) {
     injectGlobalCss(stylesCss.toString(), target);
     
-    window.Vaadin['_vaadintheme_vaadincrm_globalCss'].push(target);
+    window.Vaadin['_vaadintheme_fusioncrmtutorial_globalCss'].push(target);
   }
-  if (!document['_vaadintheme_vaadincrm_componentCss']) {
+  if (!document['_vaadintheme_fusioncrmtutorial_componentCss']) {
     
-    document['_vaadintheme_vaadincrm_componentCss'] = true;
+    document['_vaadintheme_fusioncrmtutorial_componentCss'] = true;
   }
   // Lumo styles are injected into shadow roots.
 // For the document, we need to be compatible with flow-generated-imports and add missing <style> tags.

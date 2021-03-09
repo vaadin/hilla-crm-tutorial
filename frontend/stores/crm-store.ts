@@ -1,10 +1,10 @@
 import { makeAutoObservable, observable, runInAction } from "mobx";
 
-import Company from "Frontend/generated/com/vaadin/crm/data/entity/Company";
-import Contact from "Frontend/generated/com/vaadin/crm/data/entity/Contact";
-import Status from "Frontend/generated/com/vaadin/crm/data/entity/Status";
+import Company from "Frontend/generated/com/example/application/data/entity/Company";
+import Contact from "Frontend/generated/com/example/application/data/entity/Contact";
+import Status from "Frontend/generated/com/example/application/data/entity/Status";
 import * as endpoint from "Frontend/generated/CrmEndpoint";
-import CrmDataModel from "Frontend/generated/com/vaadin/crm/data/endpoint/CrmEndpoint/CrmDataModel";
+import CrmDataModel from "Frontend/generated/com/example/application/data/endpoint/CrmEndpoint/CrmDataModel";
 import { cacheable } from "./cacheable";
 import { uiStore } from "./app-store";
 
@@ -65,13 +65,18 @@ export class CrmStore {
     }
   }
 
-  private saveLocal(contact: Contact) {
-    if (this.contacts.some((c) => c.id === contact.id)) {
-      this.contacts = this.contacts.map((c) =>
-        c.id === contact.id ? contact : c
-      );
+  private saveLocal(saved: Contact) {
+    const contactExists = this.contacts.some((c) => c.id === saved.id);
+    if (contactExists) {
+      this.contacts = this.contacts.map((existing) => {
+        if (existing.id === saved.id) {
+          return saved;
+        } else {
+          return existing;
+        }
+      });
     } else {
-      this.contacts.push(contact);
+      this.contacts.push(saved);
     }
   }
 

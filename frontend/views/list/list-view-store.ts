@@ -1,5 +1,5 @@
-import Contact from "Frontend/generated/com/vaadin/crm/data/entity/Contact";
-import ContactModel from "Frontend/generated/com/vaadin/crm/data/entity/ContactModel";
+import Contact from "Frontend/generated/com/example/application/data/entity/Contact";
+import ContactModel from "Frontend/generated/com/example/application/data/entity/ContactModel";
 import { crmStore } from "Frontend/stores/app-store";
 import { makeAutoObservable, observable } from "mobx";
 

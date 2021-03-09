@@ -14,6 +14,7 @@ export class ListView extends View {
   connectedCallback() {
     super.connectedCallback();
     this.classList.add(
+      "box-border",
       "flex",
       "flex-column",
       "p-m",

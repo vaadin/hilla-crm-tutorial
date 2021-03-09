@@ -16,7 +16,7 @@ import com.vaadin.flow.theme.Theme;
  *
  */
 @SpringBootApplication
-@Theme(value = "vaadincrm")
+@Theme(value = "fusioncrmtutorial")
 @PWA(name = "Vaadin CRM", shortName = "Vaadin CRM", offlineResources = {"images/logo.png"})
 public class Application extends SpringBootServletInitializer implements AppShellConfigurator {
 
