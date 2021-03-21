@@ -1,6 +1,7 @@
 package com.example.application.data.generator;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,9 +9,9 @@ import java.util.stream.Stream;
 import com.example.application.data.entity.Company;
 import com.example.application.data.entity.Contact;
 import com.example.application.data.entity.Status;
-import com.example.application.data.service.StatusRepository;
 import com.example.application.data.service.CompanyRepository;
 import com.example.application.data.service.ContactRepository;
+import com.example.application.data.service.StatusRepository;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 
 import org.slf4j.Logger;
@@ -37,7 +38,7 @@ public class DataGenerator {
 
       logger.info("Generating demo data");
       if (companyRepository.count() == 0) {
-        var companyGenerator = new ExampleDataGenerator<>(Company.class, LocalDateTime.now());
+        ExampleDataGenerator<Company> companyGenerator = new ExampleDataGenerator<>(Company.class, LocalDateTime.now());
         companyGenerator.setData(Company::setName, DataType.COMPANY_NAME);
         companyRepository.saveAll(companyGenerator.create(5, seed));
       }
@@ -46,15 +47,15 @@ public class DataGenerator {
           .map(Status::new).collect(Collectors.toList()));
 
       logger.info("... generating 50 Contact entities...");
-      var contactGenerator = new ExampleDataGenerator<>(Contact.class, LocalDateTime.now());
+      ExampleDataGenerator<Contact> contactGenerator = new ExampleDataGenerator<>(Contact.class, LocalDateTime.now());
       contactGenerator.setData(Contact::setFirstName, DataType.FIRST_NAME);
       contactGenerator.setData(Contact::setLastName, DataType.LAST_NAME);
       contactGenerator.setData(Contact::setEmail, DataType.EMAIL);
 
       Random r = new Random(seed);
-      var companies = companyRepository.findAll();
-      var statuses = statusRepository.findAll();
-      var contacts = contactGenerator.create(50, seed).stream().map(contact -> {
+      List<Company> companies = companyRepository.findAll();
+      List<Status> statuses = statusRepository.findAll();
+      List<Contact> contacts = contactGenerator.create(50, seed).stream().map(contact -> {
         contact.setCompany(companies.get(r.nextInt(companies.size())));
         contact.setStatus(statuses.get(r.nextInt(statuses.size())));
         return contact;

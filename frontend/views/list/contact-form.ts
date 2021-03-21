@@ -53,7 +53,7 @@ export class ContactForm extends View {
         ...=${field(model.company)}
       >
       </vaadin-combo-box>
-      <div class="buttons se-s">
+      <div class="buttons spacing-e-s">
         <vaadin-button
           theme="primary"
           @click=${this.save}

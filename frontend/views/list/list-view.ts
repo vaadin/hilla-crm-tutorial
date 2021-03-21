@@ -1,40 +1,40 @@
-import { customElement, html } from "lit-element";
-import { View } from "../view";
-import "@vaadin/vaadin-text-field";
-import "@vaadin/vaadin-button";
-import "@vaadin/vaadin-grid";
-import "@vaadin/vaadin-grid/src/vaadin-grid-column";
-import "./contact-form";
-import { listViewStore } from "./list-view-store";
-import "@vaadin/vaadin-notification";
-import { uiStore } from "Frontend/stores/app-store";
+import { customElement, html } from 'lit-element';
+import { View } from '../view';
+import '@vaadin/vaadin-text-field';
+import '@vaadin/vaadin-button';
+import '@vaadin/vaadin-grid';
+import '@vaadin/vaadin-grid/src/vaadin-grid-column';
+import './contact-form';
+import { listViewStore } from './list-view-store';
+import '@vaadin/vaadin-notification';
+import { uiStore } from 'Frontend/stores/app-store';
 
-@customElement("list-view")
+@customElement('list-view')
 export class ListView extends View {
   connectedCallback() {
     super.connectedCallback();
     this.classList.add(
-      "box-border",
-      "flex",
-      "flex-column",
-      "p-m",
-      "sb-s",
-      "w-full",
-      "h-full"
+      'box-border',
+      'flex',
+      'flex-col',
+      'p-m',
+      'spacing-b-s',
+      'w-full',
+      'h-full'
     );
 
     this.autorun(() => {
       if (listViewStore.selectedContact) {
-        this.classList.add("editing");
+        this.classList.add('editing');
       } else {
-        this.classList.remove("editing");
+        this.classList.remove('editing');
       }
     });
   }
 
   render() {
     return html`
-      <div class="toolbar se-s">
+      <div class="toolbar spacing-e-s">
         <vaadin-text-field
           placeholder="Filter by name"
           .value=${listViewStore.filterText}
@@ -47,7 +47,7 @@ export class ListView extends View {
           >Add Contact</vaadin-button
         >
       </div>
-      <div class="content flex se-m h-full">
+      <div class="content flex spacing-e-m h-full">
         <vaadin-grid
           class="grid h-full"
           .items=${listViewStore.filteredContacts}
@@ -69,12 +69,12 @@ export class ListView extends View {
           ></vaadin-grid-column>
         </vaadin-grid>
         <contact-form
-          class="flex flex-column self-start sb-s"
+          class="flex flex-col spacing-b-s"
           ?hidden=${!listViewStore.selectedContact}
         ></contact-form>
       </div>
       <vaadin-notification
-        theme=${uiStore.message.error ? "error" : "contrast"}
+        theme=${uiStore.message.error ? 'error' : 'contrast'}
         position="bottom-start"
         .opened=${uiStore.message.open}
         .renderer=${(root: HTMLElement) =>

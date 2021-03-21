@@ -34,7 +34,7 @@ public class CrmEndpoint {
   }
 
   public CrmData getCrmData() {
-    var crmData = new CrmData();
+    CrmData crmData = new CrmData();
     crmData.contacts = contactRepository.findAll();
     crmData.companies = companyRepository.findAll();
     crmData.statuses = statusRepository.findAll();
@@ -42,7 +42,10 @@ public class CrmEndpoint {
   }
 
   public Contact saveContact(Contact contact) {
-    contact.setCompany(companyRepository.findById(contact.getCompany().getId()).orElseThrow());
+    contact.setCompany(companyRepository.findById(contact.getCompany().getId())
+        .orElseThrow(() -> new RuntimeException("Could not find Company with id" + contact.getCompany().getId())));
+    contact.setStatus(statusRepository.findById(contact.getStatus().getId())
+        .orElseThrow(() -> new RuntimeException("Could not find Status with id" + contact.getStatus().getId())));
     return contactRepository.save(contact);
   }
 

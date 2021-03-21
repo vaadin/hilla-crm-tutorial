@@ -9,12 +9,12 @@ import { uiStore } from "Frontend/stores/app-store";
 export class DashboardView extends View {
   connectedCallback() {
     super.connectedCallback();
-    this.classList.add("flex", "flex-column", "items-center", "pt-xl");
+    this.classList.add("flex", "flex-col", "items-center", "pt-xl");
   }
 
   render() {
     return html`
-      <div class="font-size-xl mb-xl">
+      <div class="text-xl mb-xl">
         ${dashboardViewStore.contactCount} contacts
       </div>
 
