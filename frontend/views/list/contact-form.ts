@@ -10,7 +10,7 @@ import { crmStore, uiStore } from "Frontend/stores/app-store";
 
 @customElement("contact-form")
 export class ContactForm extends View {
-  private binder = new Binder(this, ContactModel);
+  protected binder = new Binder(this, ContactModel);
   constructor() {
     super();
     this.autorun(() =>
