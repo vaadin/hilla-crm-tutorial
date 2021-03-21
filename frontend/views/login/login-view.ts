@@ -1,16 +1,16 @@
-import { uiStore } from "Frontend/stores/app-store";
-import { customElement, html, internalProperty } from "lit-element";
-import "@vaadin/vaadin-login/vaadin-login-form";
-import { View } from "../view";
+import { uiStore } from 'Frontend/stores/app-store';
+import { customElement, html, internalProperty } from 'lit-element';
+import '@vaadin/vaadin-login/vaadin-login-form';
+import { View } from '../view';
 
-@customElement("login-view")
+@customElement('login-view')
 export class LoginView extends View {
   @internalProperty()
   private error = false;
 
   connectedCallback() {
     super.connectedCallback();
-    this.classList.add("flex", "flex-column", "items-center", "justify-center");
+    this.classList.add('flex', 'flex-col', 'items-center', 'justify-center');
   }
 
   render() {
