@@ -1,5 +1,5 @@
-@import "./views/list-view.css";
-@import "lumo-css-framework/classes.css";
+@import './views/list-view.css';
+@import 'lumo-css-framework/all-classes.css';
 
 [hidden] {
   display: none !important;
