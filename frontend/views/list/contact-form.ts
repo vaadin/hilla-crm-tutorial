@@ -1,14 +1,14 @@
-import { View } from "Frontend/views/view";
-import { customElement, html } from "lit-element";
-import "@vaadin/vaadin-text-field";
-import "@vaadin/vaadin-combo-box";
-import "@vaadin/vaadin-button";
-import { listViewStore } from "./list-view-store";
-import { Binder, field } from "Frontend/../target/flow-frontend/form";
-import ContactModel from "Frontend/generated/com/example/application/data/entity/ContactModel";
-import { crmStore, uiStore } from "Frontend/stores/app-store";
+import { View } from 'Frontend/views/view';
+import { customElement, html } from 'lit-element';
+import '@vaadin/vaadin-text-field';
+import '@vaadin/vaadin-combo-box';
+import '@vaadin/vaadin-button';
+import { listViewStore } from './list-view-store';
+import { Binder, field } from 'Frontend/../target/flow-frontend/form';
+import ContactModel from 'Frontend/generated/com/example/application/data/entity/ContactModel';
+import { crmStore, uiStore } from 'Frontend/stores/app-store';
 
-@customElement("contact-form")
+@customElement('contact-form')
 export class ContactForm extends View {
   protected binder = new Binder(this, ContactModel);
   constructor() {
@@ -59,7 +59,7 @@ export class ContactForm extends View {
           @click=${this.save}
           ?disabled=${this.binder.invalid || uiStore.offline}
         >
-          ${this.binder.value.id ? "Save" : "Create"}
+          ${this.binder.value.id ? 'Save' : 'Create'}
         </vaadin-button>
         <vaadin-button
           theme="error"

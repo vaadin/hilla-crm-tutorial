@@ -1,18 +1,18 @@
 import {
   ConnectionState,
   ConnectionStateStore,
-} from "@vaadin/flow-frontend/ConnectionState";
+} from '@vaadin/flow-frontend/ConnectionState';
 import {
   login as serverLogin,
   logout as serverLogout,
-} from "@vaadin/flow-frontend";
-import { clearCache } from "./cacheable";
+} from '@vaadin/flow-frontend';
+import { clearCache } from './cacheable';
 
-import { makeAutoObservable, runInAction } from "mobx";
-import { crmStore } from "./app-store";
+import { makeAutoObservable, runInAction } from 'mobx';
+import { crmStore } from './app-store';
 
 class Message {
-  constructor(public text = "", public error = false, public open = false) {}
+  constructor(public text = '', public error = false, public open = false) {}
 }
 
 export class UiStore {
@@ -66,7 +66,7 @@ export class UiStore {
     if (!result.error) {
       this.setLoggedIn(true);
     } else {
-      throw new Error(result.errorMessage || "Login failed");
+      throw new Error(result.errorMessage || 'Login failed');
     }
   }
 
@@ -77,7 +77,6 @@ export class UiStore {
   }
 
   setLoggedIn(loggedIn: boolean) {
-    console.log("logged in: " + loggedIn);
     this.loggedIn = loggedIn;
     if (loggedIn) {
       crmStore.initFromServer();

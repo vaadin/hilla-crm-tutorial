@@ -1,5 +1,5 @@
-import { crmStore } from "Frontend/stores/app-store";
-import { makeAutoObservable } from "mobx";
+import { crmStore } from 'Frontend/stores/app-store';
+import { makeAutoObservable } from 'mobx';
 
 class DashboardViewStore {
   constructor() {
@@ -12,7 +12,7 @@ class DashboardViewStore {
 
   get companyStats() {
     const countByCompany = crmStore.contacts.reduce((map, contact) => {
-      const name = contact.company?.name || "Unknown";
+      const name = contact.company?.name || 'Unknown';
       return map.set(name, (map.get(name) || 0) + 1);
     }, new Map<string, number>());
 

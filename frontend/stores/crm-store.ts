@@ -1,12 +1,12 @@
-import { makeAutoObservable, observable, runInAction } from "mobx";
+import { makeAutoObservable, observable, runInAction } from 'mobx';
 
-import Company from "Frontend/generated/com/example/application/data/entity/Company";
-import Contact from "Frontend/generated/com/example/application/data/entity/Contact";
-import Status from "Frontend/generated/com/example/application/data/entity/Status";
-import * as endpoint from "Frontend/generated/CrmEndpoint";
-import CrmDataModel from "Frontend/generated/com/example/application/data/endpoint/CrmEndpoint/CrmDataModel";
-import { cacheable } from "./cacheable";
-import { uiStore } from "./app-store";
+import Company from 'Frontend/generated/com/example/application/data/entity/Company';
+import Contact from 'Frontend/generated/com/example/application/data/entity/Contact';
+import Status from 'Frontend/generated/com/example/application/data/entity/Status';
+import * as endpoint from 'Frontend/generated/CrmEndpoint';
+import CrmDataModel from 'Frontend/generated/com/example/application/data/endpoint/CrmEndpoint/CrmDataModel';
+import { cacheable } from './cacheable';
+import { uiStore } from './app-store';
 
 export class CrmStore {
   contacts: Contact[] = [];
@@ -31,7 +31,7 @@ export class CrmStore {
   async initFromServer() {
     const data = await cacheable(
       endpoint.getCrmData,
-      "crm",
+      'crm',
       CrmDataModel.createEmptyValue()
     );
 
@@ -45,11 +45,15 @@ export class CrmStore {
   async saveContact(contact: Contact) {
     try {
       const saved = await endpoint.saveContact(contact);
-      if(saved) this.saveLocal(saved);
-      uiStore.showSuccess("Contact saved.");
+      if (saved) {
+        this.saveLocal(saved);
+        uiStore.showSuccess('Contact saved.');
+      } else {
+        uiStore.showError('Contact save failed.');
+      }
     } catch (e) {
       console.log(e);
-      uiStore.showError("Contact save failed.");
+      uiStore.showError('Contact save failed.');
     }
   }
 
@@ -59,10 +63,10 @@ export class CrmStore {
     try {
       await endpoint.deleteContact(contact.id);
       this.deleteLocal(contact);
-      uiStore.showSuccess("Contact deleted.");
+      uiStore.showSuccess('Contact deleted.');
     } catch (e) {
       console.log(e);
-      uiStore.showError("Failed to delete contact.");
+      uiStore.showError('Failed to delete contact.');
     }
   }
 

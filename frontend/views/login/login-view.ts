@@ -11,7 +11,7 @@ export class LoginView extends View {
   connectedCallback() {
     super.connectedCallback();
     this.classList.add('flex', 'flex-col', 'items-center', 'justify-center');
-    uiStore.setLoggedIn(false);
+    uiStore.logout();
   }
 
   render() {
