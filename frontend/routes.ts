@@ -10,6 +10,7 @@ const authGuard = async (context: Context, commands: Commands) => {
   if (!uiStore.loggedIn) {
     // Save requested path
     sessionStorage.setItem("login-redirect-path", context.pathname);
+    console.log("redirecting to login from authGuard");
     return commands.redirect("/login");
   }
   return undefined;
@@ -52,12 +53,15 @@ export const routes: ViewRoute[] = [
 
 // Catch logins and logouts, redirect appropriately
 autorun(() => {
+  console.log("autorun!");
   if (uiStore.loggedIn) {
+    console.log("logged in, redirecting");
     Router.go(sessionStorage.getItem("login-redirect-path") || "/");
   } else {
+    console.log("not logged in, redirecting to login");
     if (location.pathname !== "/login") {
       sessionStorage.setItem("login-redirect-path", location.pathname);
+      Router.go("/login");
     }
-    Router.go("/login");
   }
 });

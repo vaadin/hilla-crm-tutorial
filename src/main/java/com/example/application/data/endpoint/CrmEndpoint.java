@@ -8,8 +8,8 @@ import com.example.application.data.entity.Status;
 import com.example.application.data.service.CompanyRepository;
 import com.example.application.data.service.ContactRepository;
 import com.example.application.data.service.StatusRepository;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.server.connect.Endpoint;
-import com.vaadin.flow.server.connect.auth.AnonymousAllowed;
 
 @Endpoint
 @AnonymousAllowed

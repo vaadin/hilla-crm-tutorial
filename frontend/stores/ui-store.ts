@@ -76,7 +76,8 @@ export class UiStore {
     clearCache();
   }
 
-  private setLoggedIn(loggedIn: boolean) {
+  setLoggedIn(loggedIn: boolean) {
+    console.log("logged in: " + loggedIn);
     this.loggedIn = loggedIn;
     if (loggedIn) {
       crmStore.initFromServer();

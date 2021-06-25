@@ -12,7 +12,7 @@ class DashboardViewStore {
 
   get companyStats() {
     const countByCompany = crmStore.contacts.reduce((map, contact) => {
-      const name = contact.company.name;
+      const name = contact.company?.name || "Unknown";
       return map.set(name, (map.get(name) || 0) + 1);
     }, new Map<string, number>());
 

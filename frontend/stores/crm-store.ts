@@ -44,7 +44,8 @@ export class CrmStore {
 
   async saveContact(contact: Contact) {
     try {
-      this.saveLocal(await endpoint.saveContact(contact));
+      const saved = await endpoint.saveContact(contact);
+      if(saved) this.saveLocal(saved);
       uiStore.showSuccess("Contact saved.");
     } catch (e) {
       console.log(e);
