@@ -1,15 +1,16 @@
-import { customElement, html } from "lit-element";
-import { View } from "../view";
-import "@vaadin/vaadin-charts";
-import "@vaadin/vaadin-charts/src/vaadin-chart-series";
-import { dashboardViewStore } from "./dashboard-view-store";
-import { uiStore } from "Frontend/stores/app-store";
+import { View } from '../view';
+import '@vaadin/vaadin-charts';
+import '@vaadin/vaadin-charts/src/vaadin-chart-series';
+import { dashboardViewStore } from './dashboard-view-store';
+import { uiStore } from 'Frontend/stores/app-store';
+import { customElement } from 'lit/decorators';
+import { html } from 'lit';
 
-@customElement("dashboard-view")
+@customElement('dashboard-view')
 export class DashboardView extends View {
   connectedCallback() {
     super.connectedCallback();
-    this.classList.add("flex", "flex-col", "items-center", "pt-xl");
+    this.classList.add('flex', 'flex-col', 'items-center', 'pt-xl');
   }
 
   render() {
@@ -33,8 +34,7 @@ export class DashboardView extends View {
       return html`
         <vaadin-chart type="pie">
           <vaadin-chart-series
-            .values=${dashboardViewStore.companyStats}
-          ></vaadin-chart-series>
+            .values=${dashboardViewStore.companyStats}></vaadin-chart-series>
         </vaadin-chart>
       `;
     }

@@ -1,10 +1,10 @@
-import { MiddlewareContext } from "@vaadin/flow-frontend";
-import { MiddlewareNext } from "@vaadin/flow-frontend";
-import { ConnectClient } from "@vaadin/flow-frontend";
-import { uiStore } from "./stores/app-store";
+import { MiddlewareContext } from '@vaadin/fusion-frontend';
+import { MiddlewareNext } from '@vaadin/fusion-frontend';
+import { ConnectClient } from '@vaadin/fusion-frontend';
+import { uiStore } from './stores/app-store';
 
 const client = new ConnectClient({
-  prefix: "connect",
+  prefix: 'connect',
   middlewares: [
     async (context: MiddlewareContext, next: MiddlewareNext) => {
       const response = await next(context);

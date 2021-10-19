@@ -9,7 +9,7 @@
 
   <properties>
     <java.version>8</java.version>
-    <vaadin.version>20.0.3</vaadin.version>
+    <vaadin.version>22.0.0.alpha8</vaadin.version>
   </properties>
 
   <parent>
@@ -104,13 +104,13 @@
     <dependency>
       <groupId>org.vaadin.artur</groupId>
       <artifactId>a-vaadin-helper</artifactId>
-      <version>1.5.0</version>
+      <version>1.7.2</version>
     </dependency>
 
     <dependency>
-      <groupId>org.vaadin.artur.exampledata</groupId>
+      <groupId>com.vaadin</groupId>
       <artifactId>exampledata</artifactId>
-      <version>3.3.3</version>
+      <version>4.0.0</version>
     </dependency>
 
     <dependency>

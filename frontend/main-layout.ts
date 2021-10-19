@@ -1,10 +1,11 @@
-import { css, customElement, html } from 'lit-element';
 import { Layout } from './views/view';
 import '@vaadin/vaadin-app-layout';
 import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle';
 
 import { views } from './routes';
 import { uiStore } from './stores/app-store';
+import { customElement } from 'lit/decorators';
+import { css, html } from 'lit';
 
 @customElement('main-layout')
 export class MainLayout extends Layout {

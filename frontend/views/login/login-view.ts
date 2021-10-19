@@ -1,7 +1,8 @@
 import { uiStore } from 'Frontend/stores/app-store';
-import { customElement, html, state } from 'lit-element';
 import '@vaadin/vaadin-login/vaadin-login-form';
 import { View } from '../view';
+import { customElement, state } from 'lit/decorators';
+import { html } from 'lit';
 
 @customElement('login-view')
 export class LoginView extends View {
@@ -21,8 +22,7 @@ export class LoginView extends View {
         no-forgot-password
         @login=${this.login}
         .error=${this.error}
-        ?disabled=${uiStore.offline}
-      >
+        ?disabled=${uiStore.offline}>
       </vaadin-login-form>
       ${uiStore.offline
         ? html` <b>You are offline. Login is only available while online.</b> `

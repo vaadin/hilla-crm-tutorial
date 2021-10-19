@@ -1,6 +1,9 @@
 package com.example.application.data.endpoint;
 
+import java.util.Collections;
 import java.util.List;
+
+import javax.annotation.security.PermitAll;
 
 import com.example.application.data.entity.Company;
 import com.example.application.data.entity.Contact;
@@ -8,11 +11,11 @@ import com.example.application.data.entity.Status;
 import com.example.application.data.service.CompanyRepository;
 import com.example.application.data.service.ContactRepository;
 import com.example.application.data.service.StatusRepository;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
-import com.vaadin.flow.server.connect.Endpoint;
+import com.vaadin.fusion.Endpoint;
+import com.vaadin.fusion.Nonnull;
 
 @Endpoint
-@AnonymousAllowed
+@PermitAll
 public class CrmEndpoint {
 
   private ContactRepository contactRepository;
@@ -28,12 +31,15 @@ public class CrmEndpoint {
   }
 
   public static class CrmData {
-    public List<Contact> contacts;
-    public List<Company> companies;
-    public List<Status> statuses;
+    @Nonnull
+    public List<@Nonnull Contact> contacts = Collections.emptyList();
+    @Nonnull
+    public List<@Nonnull Company> companies = Collections.emptyList();
+    @Nonnull
+    public List<@Nonnull Status> statuses = Collections.emptyList();
   }
 
-  public CrmData getCrmData() {
+  public @Nonnull CrmData getCrmData() {
     CrmData crmData = new CrmData();
     crmData.contacts = contactRepository.findAll();
     crmData.companies = companyRepository.findAll();
@@ -41,7 +47,7 @@ public class CrmEndpoint {
     return crmData;
   }
 
-  public Contact saveContact(Contact contact) {
+  public @Nonnull Contact saveContact(Contact contact) {
     contact.setCompany(companyRepository.findById(contact.getCompany().getId())
         .orElseThrow(() -> new RuntimeException("Could not find Company with id" + contact.getCompany().getId())));
     contact.setStatus(statusRepository.findById(contact.getStatus().getId())

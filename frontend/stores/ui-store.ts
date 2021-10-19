@@ -1,15 +1,12 @@
 import {
-  ConnectionState,
-  ConnectionStateStore,
-} from '@vaadin/flow-frontend/ConnectionState';
-import {
   login as serverLogin,
   logout as serverLogout,
-} from '@vaadin/flow-frontend';
+} from '@vaadin/fusion-frontend';
 import { clearCache } from './cacheable';
 
 import { makeAutoObservable, runInAction } from 'mobx';
 import { crmStore } from './app-store';
+import { ConnectionState, ConnectionStateStore } from '@vaadin/common-frontend';
 
 class Message {
   constructor(public text = '', public error = false, public open = false) {}
