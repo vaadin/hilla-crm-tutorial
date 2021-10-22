@@ -1,21 +1,14 @@
 import { Commands, Context, Route, Router } from '@vaadin/router';
-import './main-layout.ts';
-import './views/list/list-view';
-import './views/login/login-view';
-import { autorun } from 'mobx';
-
 import { uiStore } from './stores/app-store';
+import { autorun } from 'mobx';
+import './views/login/login-view';
+import './views/list/list-view';
+import './main-layout.ts';
 
-const authGuard = async (context: Context, commands: Commands) => {
-  if (!uiStore.loggedIn) {
-    // Save requested path
-    sessionStorage.setItem('login-redirect-path', context.pathname);
-    return commands.redirect('/login');
-  }
-  return undefined;
+export type ViewRoute = Route & {
+  title?: string;
+  children?: ViewRoute[];
 };
-
-export type ViewRoute = Route & { title?: string; children?: ViewRoute[] };
 
 export const views: ViewRoute[] = [
   {
@@ -33,8 +26,20 @@ export const views: ViewRoute[] = [
   },
 ];
 
+const authGuard = async (context: Context, commands: Commands) => {
+  if (!uiStore.loggedIn) {
+    // Save requested path
+    sessionStorage.setItem('login-redirect-path', context.pathname);
+    return commands.redirect('/login');
+  }
+  return undefined;
+};
+
 export const routes: ViewRoute[] = [
-  { path: 'login', component: 'login-view' },
+  {
+    path: 'login',
+    component: 'login-view',
+  },
   {
     path: 'logout',
     action: (_: Context, commands: Commands) => {
@@ -50,7 +55,6 @@ export const routes: ViewRoute[] = [
   },
 ];
 
-// Catch logins and logouts, redirect appropriately
 autorun(() => {
   if (uiStore.loggedIn) {
     Router.go(sessionStorage.getItem('login-redirect-path') || '/');

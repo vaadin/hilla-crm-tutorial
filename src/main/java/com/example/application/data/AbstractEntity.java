@@ -4,35 +4,42 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import com.vaadin.fusion.Nonnull;
+
 @MappedSuperclass
 public abstract class AbstractEntity {
 
-  @Id
-  @GeneratedValue
-  private Integer id;
+    @Id
+    @GeneratedValue
+    @Nonnull
+    private Integer id;
 
-  public Integer getId() {
-    return id;
-  }
-
-  @Override
-  public int hashCode() {
-    if (id != null) {
-      return id.hashCode();
+    public Integer getId() {
+        return id;
     }
-    return super.hashCode();
-  }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (!(obj instanceof AbstractEntity)) {
-      return false; // null or other class
+    public void setId(Integer id) {
+        this.id = id;
     }
-    AbstractEntity other = (AbstractEntity) obj;
 
-    if (id != null) {
-      return id.equals(other.id);
+    @Override
+    public int hashCode() {
+        if (id != null) {
+            return id.hashCode();
+        }
+        return super.hashCode();
     }
-    return super.equals(other);
-  }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof AbstractEntity)) {
+            return false; // null or other class
+        }
+        AbstractEntity other = (AbstractEntity) obj;
+
+        if (id != null) {
+            return id.equals(other.id);
+        }
+        return super.equals(other);
+    }
 }
