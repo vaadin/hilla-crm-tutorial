@@ -1,6 +1,8 @@
-import { MiddlewareContext } from '@vaadin/fusion-frontend';
-import { MiddlewareNext } from '@vaadin/fusion-frontend';
-import { ConnectClient } from '@vaadin/fusion-frontend';
+import {
+  MiddlewareContext,
+  MiddlewareNext,
+  ConnectClient,
+} from '@vaadin/fusion-frontend';
 import { uiStore } from './stores/app-store';
 
 const client = new ConnectClient({
@@ -8,7 +10,7 @@ const client = new ConnectClient({
   middlewares: [
     async (context: MiddlewareContext, next: MiddlewareNext) => {
       const response = await next(context);
-      // Log out if the session has expired
+      // Log out if the authentication has expired
       if (response.status === 401) {
         uiStore.logout();
       }

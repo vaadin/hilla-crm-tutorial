@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.vaadin.crm</groupId>
-  <artifactId>vaadin-crm</artifactId>
-  <name>Vaadin CRM</name>
+  <!-- Vaadin project from https://start.vaadin.com/project/2ef90529-415e-4220-81c3-b965c41d57f7 -->
+  <groupId>com.example.application</groupId>
+  <artifactId>fusioncrmtutorial</artifactId>
+  <name>Project base for Spring Boot and Vaadin Flow</name>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
-    <java.version>8</java.version>
-    <vaadin.version>22.0.0.alpha8</vaadin.version>
+    <java.version>11</java.version>
+    <vaadin.version>22.0.0.alpha9</vaadin.version>
   </properties>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.2</version>
+    <version>2.5.4</version>
   </parent>
 
   <repositories>
@@ -84,6 +85,27 @@
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-spring-boot-starter</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.vaadin.artur</groupId>
+      <artifactId>a-vaadin-helper</artifactId>
+      <version>1.7.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>exampledata</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -100,41 +122,39 @@
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
     </dependency>
-
     <dependency>
-      <groupId>org.vaadin.artur</groupId>
-      <artifactId>a-vaadin-helper</artifactId>
-      <version>1.7.2</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
     </dependency>
-
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>exampledata</artifactId>
-      <version>4.0.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-    </dependency>
-
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-testbench</artifactId>
       <scope>test</scope>
     </dependency>
+    <!-- Include JUnit 4 support for TestBench and others -->
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.hamcrest</groupId>
+          <artifactId>hamcrest-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>3.8.1</version>
+      <version>4.4.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -198,6 +218,12 @@
           </plugin>
         </plugins>
       </build>
+      <dependencies>
+        <dependency>
+          <groupId>org.postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+        </dependency>
+      </dependencies>
     </profile>
 
     <profile>

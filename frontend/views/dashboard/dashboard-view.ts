@@ -1,10 +1,9 @@
-import { View } from '../view';
-import '@vaadin/vaadin-charts';
-import '@vaadin/vaadin-charts/src/vaadin-chart-series';
-import { dashboardViewStore } from './dashboard-view-store';
-import { uiStore } from 'Frontend/stores/app-store';
-import { customElement } from 'lit/decorators';
 import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { View } from 'Frontend/views/view';
+import '@vaadin/charts';
+import '@vaadin/charts/src/vaadin-chart-series';
+import { dashboardViewStore } from './dashboard-view-store';
 
 @customElement('dashboard-view')
 export class DashboardView extends View {
@@ -25,11 +24,7 @@ export class DashboardView extends View {
 
   getCompanyStats() {
     if (dashboardViewStore.companyStats.length === 0) {
-      if (uiStore.offline) {
-        return html`<p>Connect to the internet to view stats</p>`;
-      } else {
-        return html`<p>Loading stats...</p>`;
-      }
+      return html`<p>Loading stats...</p>`;
     } else {
       return html`
         <vaadin-chart type="pie">

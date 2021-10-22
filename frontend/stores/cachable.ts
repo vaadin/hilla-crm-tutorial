@@ -1,4 +1,4 @@
-const CACHE_NAME = "crm-cache";
+const CACHE_NAME = 'crm-cache';
 
 export async function cacheable<T>(
   fn: () => Promise<T>,
@@ -25,7 +25,7 @@ export async function cacheable<T>(
 }
 
 function getCache(): any {
-  const cache = localStorage.getItem(CACHE_NAME) || "{}";
+  const cache = localStorage.getItem(CACHE_NAME) || '{}';
   return JSON.parse(cache);
 }
 

@@ -3,10 +3,10 @@ import { makeAutoObservable, observable, runInAction } from 'mobx';
 import Company from 'Frontend/generated/com/example/application/data/entity/Company';
 import Contact from 'Frontend/generated/com/example/application/data/entity/Contact';
 import Status from 'Frontend/generated/com/example/application/data/entity/Status';
-import * as endpoint from 'Frontend/generated/CrmEndpoint';
-import CrmDataModel from 'Frontend/generated/com/example/application/data/endpoint/CrmEndpoint/CrmDataModel';
-import { cacheable } from './cacheable';
+import { CrmEndpoint } from 'Frontend/generated/endpoints';
 import { uiStore } from './app-store';
+import { cacheable } from './cachable';
+import CrmDataModel from 'Frontend/generated/com/example/application/data/endpoint/CrmEndpoint/CrmDataModel';
 
 export class CrmStore {
   contacts: Contact[] = [];
@@ -30,7 +30,7 @@ export class CrmStore {
 
   async initFromServer() {
     const data = await cacheable(
-      endpoint.getCrmData,
+      CrmEndpoint.getCrmData,
       'crm',
       CrmDataModel.createEmptyValue()
     );
@@ -44,7 +44,7 @@ export class CrmStore {
 
   async saveContact(contact: Contact) {
     try {
-      const saved = await endpoint.saveContact(contact);
+      const saved = await CrmEndpoint.saveContact(contact);
       if (saved) {
         this.saveLocal(saved);
         uiStore.showSuccess('Contact saved.');
@@ -61,11 +61,10 @@ export class CrmStore {
     if (!contact.id) return;
 
     try {
-      await endpoint.deleteContact(contact.id);
+      await CrmEndpoint.deleteContact(contact.id);
       this.deleteLocal(contact);
       uiStore.showSuccess('Contact deleted.');
     } catch (e) {
-      console.log(e);
       uiStore.showError('Failed to delete contact.');
     }
   }

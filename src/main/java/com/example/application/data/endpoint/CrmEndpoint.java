@@ -1,23 +1,21 @@
 package com.example.application.data.endpoint;
 
+
 import java.util.Collections;
 import java.util.List;
-
 import javax.annotation.security.PermitAll;
-
 import com.example.application.data.entity.Company;
 import com.example.application.data.entity.Contact;
 import com.example.application.data.entity.Status;
-import com.example.application.data.service.CompanyRepository;
-import com.example.application.data.service.ContactRepository;
-import com.example.application.data.service.StatusRepository;
+import com.example.application.data.repository.CompanyRepository;
+import com.example.application.data.repository.ContactRepository;
+import com.example.application.data.repository.StatusRepository;
 import com.vaadin.fusion.Endpoint;
 import com.vaadin.fusion.Nonnull;
 
 @Endpoint
 @PermitAll
 public class CrmEndpoint {
-
   private ContactRepository contactRepository;
   private CompanyRepository companyRepository;
   private StatusRepository statusRepository;
@@ -27,19 +25,19 @@ public class CrmEndpoint {
     this.contactRepository = contactRepository;
     this.companyRepository = companyRepository;
     this.statusRepository = statusRepository;
-
   }
 
   public static class CrmData {
     @Nonnull
     public List<@Nonnull Contact> contacts = Collections.emptyList();
     @Nonnull
-    public List<@Nonnull Company> companies = Collections.emptyList();
+    public List<@Nonnull Company> companies = Collections.emptyList();;
     @Nonnull
-    public List<@Nonnull Status> statuses = Collections.emptyList();
+    public List<@Nonnull Status> statuses = Collections.emptyList();;
   }
 
-  public @Nonnull CrmData getCrmData() {
+  @Nonnull
+  public CrmData getCrmData() {
     CrmData crmData = new CrmData();
     crmData.contacts = contactRepository.findAll();
     crmData.companies = companyRepository.findAll();
@@ -47,11 +45,14 @@ public class CrmEndpoint {
     return crmData;
   }
 
-  public @Nonnull Contact saveContact(Contact contact) {
+  @Nonnull
+  public Contact saveContact(Contact contact) {
     contact.setCompany(companyRepository.findById(contact.getCompany().getId())
-        .orElseThrow(() -> new RuntimeException("Could not find Company with id" + contact.getCompany().getId())));
+        .orElseThrow(() -> new RuntimeException(
+            "Could not find Company with id" + contact.getCompany().getId())));
     contact.setStatus(statusRepository.findById(contact.getStatus().getId())
-        .orElseThrow(() -> new RuntimeException("Could not find Status with id" + contact.getStatus().getId())));
+        .orElseThrow(() -> new RuntimeException(
+            "Could not find Status with id" + contact.getStatus().getId())));
     return contactRepository.save(contact);
   }
 

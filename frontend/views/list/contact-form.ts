@@ -1,27 +1,32 @@
-import { View } from 'Frontend/views/view';
 import { html } from 'lit';
-import { customElement } from 'lit/decorators';
-import '@vaadin/vaadin-text-field';
-import '@vaadin/vaadin-combo-box';
-import '@vaadin/vaadin-button';
-import { listViewStore } from './list-view-store';
+import { customElement } from 'lit/decorators.js';
+import { View } from 'Frontend/views/view';
 import { Binder, field } from '@vaadin/form';
 import ContactModel from 'Frontend/generated/com/example/application/data/entity/ContactModel';
 import { crmStore, uiStore } from 'Frontend/stores/app-store';
+import { listViewStore } from './list-view-store';
+import '@vaadin/button';
+import '@vaadin/combo-box';
+import '@vaadin/text-field';
 
 @customElement('contact-form')
 export class ContactForm extends View {
   protected binder = new Binder(this, ContactModel);
+
   constructor() {
     super();
-    this.autorun(() =>
-      this.binder.read(
-        listViewStore.selectedContact || ContactModel.createEmptyValue()
-      )
-    );
+    this.autorun(() => {
+      if (listViewStore.selectedContact) {
+        this.binder.read(listViewStore.selectedContact);
+      } else {
+        this.binder.clear();
+      }
+    });
   }
+
   render() {
     const { model } = this.binder;
+
     return html`
       <vaadin-text-field
         label="First name"
@@ -37,27 +42,28 @@ export class ContactForm extends View {
         ${field(model.email)}></vaadin-text-field>
       <vaadin-combo-box
         label="Status"
-        .items=${crmStore.statuses}
         ?disabled=${uiStore.offline}
+        ${field(model.status)}
         item-label-path="name"
-        ${field(model.status)}></vaadin-combo-box>
+        .items=${crmStore.statuses}></vaadin-combo-box>
       <vaadin-combo-box
         label="Company"
-        item-label-path="name"
-        .items=${crmStore.companies}
         ?disabled=${uiStore.offline}
-        ${field(model.company)}></vaadin-combo-box>
-      <div class="buttons spacing-e-s">
+        ${field(model.company)}
+        item-label-path="name"
+        .items=${crmStore.companies}></vaadin-combo-box>
+
+      <div class="flex gap-s">
         <vaadin-button
           theme="primary"
-          @click=${this.save}
-          ?disabled=${this.binder.invalid || uiStore.offline}>
+          ?disabled=${this.binder.invalid || uiStore.offline}
+          @click=${this.save}>
           ${this.binder.value.id ? 'Save' : 'Create'}
         </vaadin-button>
         <vaadin-button
           theme="error"
-          @click=${listViewStore.delete}
-          ?disabled=${!this.binder.value.id || uiStore.offline}>
+          ?disabled=${!this.binder.value.id || uiStore.offline}
+          @click=${listViewStore.delete}>
           Delete
         </vaadin-button>
         <vaadin-button theme="tertiary" @click=${listViewStore.cancelEdit}>

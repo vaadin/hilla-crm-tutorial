@@ -12,26 +12,26 @@ import com.example.application.data.AbstractEntity;
 
 @Entity
 public class Company extends AbstractEntity {
-  @NotBlank
-  private String name;
+    @NotBlank
+    private String name;
 
-  @OneToMany(mappedBy = "company")
-  @Nullable
-  private List<Contact> employees = new LinkedList<>();
+    @OneToMany(mappedBy = "company")
+    @Nullable
+    private List<Contact> employees = new LinkedList<>();
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public List<Contact> getEmployees() {
-    return employees;
-  }
+    public List<Contact> getEmployees() {
+        return employees;
+    }
 
-  public void setEmployees(List<Contact> employees) {
-    this.employees = employees;
-  }
+    public void setEmployees(List<Contact> employees) {
+        this.employees = employees;
+    }
 }

@@ -1,10 +1,8 @@
+import { makeAutoObservable } from 'mobx';
 import {
   login as serverLogin,
   logout as serverLogout,
 } from '@vaadin/fusion-frontend';
-import { clearCache } from './cacheable';
-
-import { makeAutoObservable, runInAction } from 'mobx';
 import { crmStore } from './app-store';
 import { ConnectionState, ConnectionStateStore } from '@vaadin/common-frontend';
 
@@ -13,8 +11,8 @@ class Message {
 }
 
 export class UiStore {
-  loggedIn = true;
   message = new Message();
+  loggedIn = true;
   offline = false;
 
   constructor() {
@@ -70,7 +68,6 @@ export class UiStore {
   async logout() {
     await serverLogout();
     this.setLoggedIn(false);
-    clearCache();
   }
 
   setLoggedIn(loggedIn: boolean) {
@@ -88,8 +85,12 @@ export class UiStore {
     this.showMessage(message, true);
   }
 
+  clearMessage() {
+    this.message = new Message();
+  }
+
   private showMessage(text: string, error: boolean) {
     this.message = new Message(text, error, true);
-    setTimeout(() => runInAction(() => (this.message = new Message())), 5000);
+    setTimeout(() => this.clearMessage(), 5000);
   }
 }
