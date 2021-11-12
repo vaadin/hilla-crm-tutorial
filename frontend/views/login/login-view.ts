@@ -25,6 +25,15 @@ export class LoginView extends View {
         .error=${this.error}
         ?disabled=${uiStore.offline}>
       </vaadin-login-form>
+      <p>
+        This is a <b>demo</b> app. You can log in with the following
+        credentials:
+      </p>
+      <ul>
+        <li><b>User:</b> user</li>
+        <li><b>Password:</b> userpass</li>
+      </ul>
+      <p>The database is reset periodically.</p>
       ${uiStore.offline
         ? html` <b>You are offline. Login is only available while online.</b> `
         : nothing}
