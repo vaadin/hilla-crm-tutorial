@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx';
 import {
   login as serverLogin,
   logout as serverLogout,
-} from '@vaadin/fusion-frontend';
+} from '@hilla/frontend';
 import { crmStore } from './app-store';
 import { ConnectionState, ConnectionStateStore } from '@vaadin/common-frontend';
 
