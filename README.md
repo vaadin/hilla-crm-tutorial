@@ -1,6 +1,6 @@
-# Learn Vaadin Fusion Course: CRM Example Application
+# Learn Vaadin Hilla Course: CRM Example Application
 
-This repo contains the source code for the [Vaadin Fusion in-depth course](https://vaadin.com/docs/latest/fusion/tutorials/in-depth-course).
+This repo contains the source code for the [Vaadin Hilla in-depth course](https://hilla.dev/docs/tutorials/in-depth-course).
 
 ## Requirements
 

@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { View } from 'Frontend/views/view';
-import { Binder, field } from '@vaadin/form';
+import { Binder, field } from '@hilla/form';
 import ContactModel from 'Frontend/generated/com/example/application/data/entity/ContactModel';
 import { crmStore, uiStore } from 'Frontend/stores/app-store';
 import { listViewStore } from './list-view-store';

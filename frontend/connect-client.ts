@@ -2,7 +2,7 @@ import {
   MiddlewareContext,
   MiddlewareNext,
   ConnectClient,
-} from '@vaadin/fusion-frontend';
+} from '@hilla/frontend';
 import { uiStore } from './stores/app-store';
 
 const client = new ConnectClient({
