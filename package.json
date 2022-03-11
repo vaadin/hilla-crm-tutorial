@@ -175,11 +175,9 @@
     "@vaadin/icons": "$@vaadin/icons",
     "@vaadin/input-container": "$@vaadin/input-container",
     "@vaadin/integer-field": "$@vaadin/integer-field",
-    "@polymer/iron-a11y-announcer": "$@polymer/iron-a11y-announcer",
     "@polymer/iron-icon": "$@polymer/iron-icon",
     "@polymer/iron-iconset-svg": "$@polymer/iron-iconset-svg",
     "@polymer/iron-list": "$@polymer/iron-list",
-    "@polymer/iron-media-query": "$@polymer/iron-media-query",
     "@polymer/iron-meta": "$@polymer/iron-meta",
     "@polymer/iron-resizable-behavior": "$@polymer/iron-resizable-behavior",
     "@vaadin/item": "$@vaadin/item",
@@ -269,7 +267,9 @@
     "lit": "$lit",
     "mobx": "$mobx",
     "@hilla/form": "$@hilla/form",
-    "@hilla/frontend": "$@hilla/frontend"
+    "@hilla/frontend": "$@hilla/frontend",
+    "@vaadin/bundles": "$@vaadin/bundles",
+    "chokidar": "$chokidar"
   },
   "vaadin": {
     "dependencies": {
