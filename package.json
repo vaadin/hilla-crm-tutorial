@@ -138,7 +138,7 @@
     "typescript": "4.5.3",
     "webpack": "4.46.0",
     "webpack-cli": "4.9.2",
-    "webpack-dev-server": "4.7.4",
+    "webpack-dev-server": "4.8.1",
     "webpack-merge": "4.2.2",
     "workbox-core": "6.5.0",
     "workbox-precaching": "6.5.0",
@@ -399,12 +399,12 @@
       "typescript": "4.5.3",
       "webpack": "4.46.0",
       "webpack-cli": "4.9.2",
-      "webpack-dev-server": "4.7.4",
+      "webpack-dev-server": "4.8.1",
       "webpack-merge": "4.2.2",
       "workbox-core": "6.5.0",
       "workbox-precaching": "6.5.0",
       "workbox-webpack-plugin": "6.5.0"
     },
-    "hash": "5230b90d19159d7ce33a0cfab7adcfd042d325ac8e16cd0d1fecb8751aceb706"
+    "hash": "f4002979fc762c92967240970c301b8729966128eff4067e0fe5eac87fb6b392"
   }
 }
