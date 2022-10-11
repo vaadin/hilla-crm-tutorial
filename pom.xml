@@ -11,7 +11,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <hilla.version>1.2.3</hilla.version>
+        <hilla.version>1.2.4</hilla.version>
     </properties>
 
     <parent>
