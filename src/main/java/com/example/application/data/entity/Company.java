@@ -3,10 +3,10 @@ package com.example.application.data.entity;
 import com.example.application.data.AbstractEntity;
 import java.util.LinkedList;
 import java.util.List;
-import javax.annotation.Nullable;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Company extends AbstractEntity {

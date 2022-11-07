@@ -10,14 +10,15 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>11</java.version>
-        <hilla.version>1.2.6</hilla.version>
+        <java.version>17</java.version>
+        <hilla.version>2.0.0.alpha2</hilla.version>
+        <jakarta.annotation.api.version>2.1.0</jakarta.annotation.api.version>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.6</version>
+        <version>3.0.0-RC1</version>
     </parent>
 
     <repositories>
@@ -45,6 +46,14 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>spring milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+            <id>apache snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -61,6 +70,10 @@
             <url>
                 https://maven.vaadin.com/vaadin-prereleases/
             </url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring milestones</id>
+            <url>https://repo.spring.io/milestone</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -89,6 +102,11 @@
             <groupId>com.vaadin</groupId>
             <artifactId>exampledata</artifactId>
             <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta.annotation.api.version}</version>
         </dependency>
 
         <dependency>

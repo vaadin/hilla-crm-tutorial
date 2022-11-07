@@ -10,7 +10,7 @@ import com.example.application.data.repository.StatusRepository;
 import dev.hilla.Endpoint;
 import dev.hilla.Nonnull;
 
-import javax.annotation.security.PermitAll;
+import jakarta.annotation.security.PermitAll;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
