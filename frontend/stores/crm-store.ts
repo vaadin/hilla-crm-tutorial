@@ -5,7 +5,7 @@ import Contact from 'Frontend/generated/com/example/application/data/entity/Cont
 import Status from 'Frontend/generated/com/example/application/data/entity/Status';
 import { CrmEndpoint } from 'Frontend/generated/endpoints';
 import { uiStore } from './app-store';
-import { cacheable } from './cachable';
+import { cacheable } from './cacheable';
 import CrmDataModel from 'Frontend/generated/com/example/application/data/endpoint/CrmEndpoint/CrmDataModel';
 
 export class CrmStore {
