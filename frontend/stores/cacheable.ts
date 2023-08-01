@@ -7,7 +7,7 @@ export async function cacheable<T>(
 ) {
   let result;
   try {
-    // retrive the data from backend.
+    // retrieve the data from backend.
     result = await fn();
     // save the data to localStorage.
     const cache = getCache();
@@ -19,7 +19,7 @@ export async function cacheable<T>(
     const cached = cache[key];
     // use the cached data if available, otherwise the default value.
     result = result = cached === undefined ? defaultValue : cached;
-  }
+ }
 
   return result;
 }

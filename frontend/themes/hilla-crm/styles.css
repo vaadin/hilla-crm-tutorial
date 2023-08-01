@@ -1,20 +1,18 @@
-@import url('line-awesome/dist/line-awesome/css/line-awesome.min.css');
-
 [hidden] {
-    display: none !important;
+  display: none !important;
 }
 
 list-view contact-form {
-    width: 25em;
+  width: 25em;
 }
 
 @media (max-width: 700px) {
-    list-view.editing .toolbar,
-    list-view.editing .grid {
-        display: none;
-    }
+  list-view.editing .toolbar,
+  list-view.editing .grid {
+    display: none;
+  }
 
-    list-view.editing contact-form {
-        width: 100%;
-    }
+  list-view.editing contact-form {
+    width: 100%;
+  }
 }
