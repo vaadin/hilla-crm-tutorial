@@ -25,10 +25,13 @@ export class CrmStore {
       { autoBind: true }
     );
 
-    this.initFromServer();
+    setTimeout(() => {this.initFromServer()}, 0);
   }
 
   async initFromServer() {
+    if (!uiStore.loggedIn) {
+      return;
+    }
     const data = await cacheable(
       CrmEndpoint.getCrmData,
       'crm',
