@@ -2,7 +2,7 @@ import { uiStore } from 'Frontend/stores/app-store';
 import { html, nothing } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { View } from 'Frontend/views/view';
-import { LoginFormLoginEvent } from '@vaadin/login/vaadin-login-form.js';
+import type { LoginFormLoginEvent } from '@vaadin/login/vaadin-login-form.js';
 import '@vaadin/login/vaadin-login-form.js';
 
 @customElement('login-view')
