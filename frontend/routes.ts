@@ -3,7 +3,7 @@ import { uiStore } from './stores/app-store';
 import { autorun } from 'mobx';
 import './views/login/login-view';
 import './views/list/list-view';
-import './main-layout.ts';
+import './main-layout';
 
 export type ViewRoute = Route & {
   title?: string;
