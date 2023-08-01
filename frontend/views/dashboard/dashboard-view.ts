@@ -29,7 +29,8 @@ export class DashboardView extends View {
       return html`
         <vaadin-chart type="pie">
           <vaadin-chart-series
-            .values=${dashboardViewStore.companyStats}></vaadin-chart-series>
+            .values=${dashboardViewStore.companyStats}
+          ></vaadin-chart-series>
         </vaadin-chart>
       `;
     }
