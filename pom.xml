@@ -11,7 +11,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <hilla.version>2.1.4</hilla.version>
+        <hilla.version>2.1.5</hilla.version>
         <selenium.version>4.8.3</selenium.version>
     </properties>
 
