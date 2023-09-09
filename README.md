@@ -4,7 +4,7 @@ This repo contains the source code for the [Vaadin Hilla in-depth course](https:
 
 ## Requirements
 
-- Java JDK 11 or later
+- Java JDK 17 or later
 - Maven 3.6 or later
 
 ## Generating App Secret for JWT
