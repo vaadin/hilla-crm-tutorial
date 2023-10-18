@@ -9,7 +9,7 @@ This repo contains the source code for the [Vaadin Hilla in-depth course](https:
 
 ## Generating App Secret for JWT
 
-Run the following commands to create an app secret for generating JWTs. This file is ignored in `.gitignore` so you don't commit it by acciden. Read the production chapter of the tutorial for instructions on how to generate the secret for produciton.
+Run the following commands to create an app secret for generating JWTs. This file is ignored in `.gitignore` so you don't commit it by accident. Read the production chapter of the tutorial for instructions on how to generate the secret for production.
 
 ```
 mkdir -p config/local/
