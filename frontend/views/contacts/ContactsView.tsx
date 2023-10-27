@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import {CRMService} from "Frontend/generated/endpoints";
 import {Grid} from "@hilla/react-components/Grid";
 import {GridColumn} from "@hilla/react-components/GridColumn";
+import ContactForm from "Frontend/views/contacts/ContactForm";
 
 export default function ContactsView() {
     const [contacts, setContacts] = useState<ContactRecord[]>([]);
@@ -11,6 +12,16 @@ export default function ContactsView() {
     useEffect(() => {
         CRMService.findAllContacts().then(setContacts);
     }, []);
+
+    async function onContactSaved(contact: ContactRecord) {
+        const saved = await CRMService.save(contact)
+        if (contact.id) {
+            setContacts(contacts => contacts.map(current => current.id === saved.id ? saved : current));
+        } else {
+            setContacts(contacts => [...contacts, saved]);
+        }
+        setSelected(saved);
+    }
 
     return (
         <div className="p-m flex gap-m">
@@ -21,9 +32,13 @@ export default function ContactsView() {
 
                 <GridColumn path="firstName"/>
                 <GridColumn path="lastName"/>
-                <GridColumn path="email" autoWidth/>
+                <GridColumn path="email"/>
                 <GridColumn path="company.name" header="Company name"/>
             </Grid>
+
+            {selected &&
+                <ContactForm contact={selected} onSubmit={onContactSaved}/>
+            }
         </div>
     );
 }
