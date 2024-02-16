@@ -11,8 +11,10 @@
 
     <properties>
         <java.version>17</java.version>
-        <hilla.version>2.5.6</hilla.version>
+        <vaadin.version>24.4.0.alpha4</vaadin.version>
     </properties>
+    <pluginRepositories><pluginRepository><id>v</id><url>https://maven.vaadin.com/vaadin-prereleases</url></pluginRepository></pluginRepositories>
+    <repositories><repository><id>v</id><url>https://maven.vaadin.com/vaadin-prereleases</url></repository></repositories>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -23,9 +25,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>dev.hilla</groupId>
-                <artifactId>hilla-bom</artifactId>
-                <version>${hilla.version}</version>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>${vaadin.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -34,12 +36,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>dev.hilla</groupId>
-            <artifactId>hilla-react</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>dev.hilla</groupId>
-            <artifactId>hilla-spring-boot-starter</artifactId>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.parttio</groupId>
@@ -89,9 +87,9 @@
             </plugin>
 
             <plugin>
-                <groupId>dev.hilla</groupId>
-                <artifactId>hilla-maven-plugin</artifactId>
-                <version>${hilla.version}</version>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -110,9 +108,9 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>dev.hilla</groupId>
-                        <artifactId>hilla-maven-plugin</artifactId>
-                        <version>${hilla.version}</version>
+                        <groupId>com.vaadin</groupId>
+                        <artifactId>vaadin-maven-plugin</artifactId>
+                        <version>${vaadin.version}</version>
                         <executions>
                             <execution>
                                 <goals>
