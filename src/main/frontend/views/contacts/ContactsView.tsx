@@ -1,8 +1,8 @@
 import ContactRecord from 'Frontend/generated/com/example/application/services/CRMService/ContactRecord';
 import {useEffect, useState} from 'react';
 import {CRMService} from "Frontend/generated/endpoints";
-import {Grid} from "@hilla/react-components/Grid";
-import {GridColumn} from "@hilla/react-components/GridColumn";
+import {Grid} from "@vaadin/react-components/Grid";
+import {GridColumn} from "@vaadin/react-components/GridColumn";
 import ContactForm from "Frontend/views/contacts/ContactForm";
 
 export default function ContactsView() {

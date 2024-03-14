@@ -1,8 +1,8 @@
-import {TextField} from "@hilla/react-components/TextField";
-import {EmailField} from "@hilla/react-components/EmailField";
-import {Select, SelectItem} from "@hilla/react-components/Select";
-import {Button} from "@hilla/react-components/Button";
-import {useForm} from "@hilla/react-form";
+import {TextField} from "@vaadin/react-components/TextField";
+import {EmailField} from "@vaadin/react-components/EmailField";
+import {Select, SelectItem} from "@vaadin/react-components/Select";
+import {Button} from "@vaadin/react-components/Button";
+import {useForm} from "@vaadin/hilla-react-form";
 import ContactRecordModel from "Frontend/generated/com/example/application/services/CRMService/ContactRecordModel";
 import {CRMService} from "Frontend/generated/endpoints";
 import {useEffect, useState} from "react";
