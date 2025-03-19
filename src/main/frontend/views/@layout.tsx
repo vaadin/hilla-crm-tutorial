@@ -1,7 +1,7 @@
 import { AppLayout, DrawerToggle, ProgressBar, SideNav, SideNavItem } from '@vaadin/react-components';
 import { createMenuItems, useViewConfig } from '@vaadin/hilla-file-router/runtime.js';
 import { Suspense, useEffect } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import { Signal, signal, effect } from '@vaadin/hilla-react-signals';
 
 const vaadin = window.Vaadin as {
