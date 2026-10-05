@@ -1,4 +1,5 @@
-import { TextField, EmailField, Select, SelectItem, Button} from "@vaadin/react-components";
+import { TextField, EmailField, Select, Button} from "@vaadin/react-components";
+import type { SelectItemData } from "@vaadin/select";
 import { useForm } from "@vaadin/hilla-react-form";
 import ContactRecordModel from "Frontend/generated/com/example/application/services/CRMService/ContactRecordModel";
 import { CRMService } from "Frontend/generated/endpoints";
@@ -19,7 +20,7 @@ interface ContactFormProps {
 
 export default function ContactForm({contact, onSubmit}: ContactFormProps) {
 
-    const [companies, setCompanies] = useState<SelectItem[]>([]);
+    const [companies, setCompanies] = useState<SelectItemData[]>([]);
 
     const {field, model, submit, reset, read} = useForm(ContactRecordModel, { onSubmit } );
 
